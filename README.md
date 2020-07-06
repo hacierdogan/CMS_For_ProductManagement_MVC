@@ -12,4 +12,5 @@ Mesaj kutusu (gelen, favori, arşiv)
 Slider ayarı
 Ceo ayarları
 Panel ayarları
+
 PROJE İÇERİĞİ: C#, .Net MVC, Html + Css Bootstrap, Angular JS, Ajax, Javascript, MsSQL, Adonet Entity Linqtosql, Panel Pluginleri
