@@ -1,0 +1,104 @@
+﻿@model WebProduct.Models.FirmaBilgi
+@{
+    ViewBag.Title = "İletişim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container bgw">
+    <div class="content-sec">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="urunler-title">
+                    <span>@ViewBag.iletisimbaslik</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="iletisim-panel">
+                    <div class="form-success" id="gonderildi"><i class="fa fa-check-square"></i> Mesajınız Gönderildi..</div>
+                    <div class="iletisim-formu" id="mesajform">
+                        <form action="/iletisim/mesajgonder" method="post">
+                            <div class="form-group">
+                                <label for="adsoyad">Adınız Soyadınız</label>
+                                <input type="text" class="form-control" id="adsoyad" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="eposta">Eposta Adresiniz</label>
+                                <input type="email" class="form-control" id="eposta" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mesaj">Mesajınız</label>
+                                <textarea class="form-control" id="mesaj" required></textarea>
+                            </div>
+                            <button type="reset" class="btn btn-default">Temizle</button>
+                            <button type="submit" class="btn btn-default" id="mesajgonder">Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="iletisim-panel">
+                    <div class="haritasection">
+                        <input type="hidden" id="hiddenfieldkonum" value="@Model.FirmaKonum" />
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--HARITA KONUM GOSTERICI-->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAdszpBgF1z3Ju_fbpfT6Gl4QR60hgE3fI"> </script>
+<script type="text/javascript">
+    var map;
+    var lokasyon = $("#hiddenfieldkonum").val(); //hidden field
+    mapyukle(lokasyon);
+    var marker;
+
+    function mapyukle(koordBilgi) {
+        var koordinatBilgisi = koordBilgi.split(",");
+        var mapMerkezi = new google.maps.LatLng(koordinatBilgisi[0], koordinatBilgisi[1]);
+        var image = {
+            url: "/content/files/css/mapmarker.png",
+        };
+        var mapOptions = {
+            zoom: 15,
+            center: mapMerkezi
+        };
+        map = new google.maps.Map(document.getElementById('map')
+        , mapOptions);
+
+        marker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map,
+            icon: image
+        });
+    }
+
+    $("#mesajgonder").click(function () {
+      
+        if ($("#adsoyad").val() != "" && $("#eposta").val() != "" && $("#mesaj").val()!="") {
+            var yenimesaj = {
+                GonderenAdSoyad: $("#adsoyad").val(),
+                Eposta: $("#eposta").val(),
+                Mesaj: $("#mesaj").val()
+            };
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                data: yenimesaj,
+                url: '/iletisim/mesajgonder',
+                success: function (data) {
+                    if (data==true) {
+                        $("#gonderildi").css("display", "block");
+                        $("#mesajform").css("display", "none");
+                    }
+                },
+                error: function (response) {
+                    alert("İstek sırasında bir hata oluştu."+response.responseText);
+                }
+            });
+        }
+    });
+</script>

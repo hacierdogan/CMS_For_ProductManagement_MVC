@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebProduct.Models.Urunler>
+@{
+    ViewBag.Title = "UrunAra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container bgw">
+    <div class="content-sec">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="urunler-title">
+                    <span>@ViewBag.aramabaslik</span>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                @if (Model.Count() > 0)
+                {
+                    <h5><strong>@ViewBag.urunadi </strong>ile ilgili <b>@Model.Count()</b> sonuç bulundu.</h5>
+                }
+                else
+                {
+                    <h5><strong>@ViewBag.urunadi </strong>ile ilgili sonuç bulunamadı.</h5>
+                }
+                
+            </div>
+                @foreach (var urun in Model)
+                {
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        <a href="/urunler/@urun.Kategoriler.KategoriURL/@urun.UrunURL">
+                            <div class="urun-item">
+                                <div class="urun-resim">
+                                    @if (urun.YeniUrun == true)
+                                    {
+                                        <img class="yeniurun" src="/Content/images/yeni.png" />
+                                    }
+                                    <img src="@urun.Resim1" class="img-responsive urunfoto" alt="urun" />
+                                </div>
+                                <div class="urun-kategori">
+                                    @urun.Kategoriler.KategoriAdi
+                                </div>
+                                <div class="urun-adi">
+                                    <span>
+                                        @urun.UrunAdi
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+    </div>
+</div>

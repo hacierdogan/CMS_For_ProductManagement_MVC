@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WebProduct.Models.Urunler>
+
+<div class="row" id="urunvitrin">
+    <div class="col-xs-12">
+        <div class="urunler-title">
+            <span>@ViewBag.HomeVitrinBaslik</span>
+        </div>
+    </div>
+    @Html.Partial("_OneCikanlarList", Model)
+
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="dahafazla" id="dahafazla">
+            <span id="dahafazlabtn">Daha fazla göster..</span>
+        </div>
+        <div id="load" class="urunloader" style="">
+            <img src="~/content/images/loading.gif" width="15" alt="load" /> Yükleniyor..
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿<form action="/apayarlar/SliderEkle" class="form-horizontal smekleform" novalidate="novalidate" enctype="multipart/form-data" method="post">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Yeni Slider</label>
+        <div class="col-sm-8">
+            <div class="firmaayarlogo">
+                <img src="~/content/images/1024x400.jpg" class="img-responsive " alt="Urun" id="SliderResimImg" />
+                <input type="file" name="SliderResim" id="SliderResim" value="" accept=".jpg,.png,.JPEG,.jpeg" class="fileuploadres" />
+                <label for="SliderResim" class="resimsec"><i class="fa fa-plus-square-o"></i> Resim Seç</label>
+            </div>
+        </div>
+        <div class="col-sm-2 ml-sm-auto">
+            <button class="btn btn-info" type="submit" id="srekle">Resim Ekle</button>
+        </div>
+    </div>
+</form>
+

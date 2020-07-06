@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebProduct.Models.SosyalMedya>
+
+@{
+    ViewBag.Title = "SosyalMedya";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Sosyal Medyalar</div>
+            <div class="ibox-tools">
+            </div>
+        </div>
+        <div class="ibox-body" style="padding:15px 0px 20px 0px">
+            @Html.Partial("SosyalMedyaEkle")
+            <table class="table table-responsive table-hover uruntablo" id="urundatatablo" cellspacing="0">
+                <thead class="thead-default">
+                    <tr>
+                        <th>Medya Adı</th>
+                        <th>İkon</th>
+                        <th>Sıra</th>
+                        <th class="text-center uruntablo-btn">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.MedyaAdi</td>
+                            <td><i class="@item.MedyaClass" aria-hidden="true"></i></td>
+                            <td>@item.MedyaSirasi</td>
+                            <td class="text-center uruntablo-btn">
+                                <div class="btn-group">
+                                    <a href="javascript:smgetir(@item.MedyaID);" class="btn btn-outline-default" title="Düzenle"><i class="fa ti-pencil-alt"></i></a>
+                                    <a href="/apayarlar/sosyalmedyasil/@item.MedyaID" class="btn btn-outline-default" title="Sil"><i class="fa fa-trash"></i></a>
+                                    <a href="@item.MedyaUrl" class="btn btn-outline-default" title="Git" target="_blank"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="backpage">
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+<script>
+    function smgetir(x) {
+        $("#iptalbtn").css('display', 'initial');
+        $.ajax({
+            url: '/apayarlar/smguncelle',
+            type: 'POST',
+            data: "id=" + x,
+            dataType: 'json',
+            success: function (data) {
+                $("#MedyaID").val(data.MedyaID);
+                $("#MedyaAdi").val(data.MedyaAdi);
+                $("#MedyaClass").val(data.MedyaClass);
+                $("#MedyaUrl").val(data.MedyaUrl);
+                $("#MedyaSirasi").val(data.MedyaSirasi);
+            },
+            error: function (data) {
+                alert('İstek sırasında bir hata oluştu.');
+            }
+        });
+    };
+    function temizle() {
+        $("#MedyaID").val("0");
+        $("#MedyaAdi").val(null);
+        $("#MedyaClass").val(null);
+        $("#MedyaUrl").val(null);
+        $("#MedyaSirasi").val(null);
+        $("#iptalbtn").css('display', 'none');
+    };    
+</script>

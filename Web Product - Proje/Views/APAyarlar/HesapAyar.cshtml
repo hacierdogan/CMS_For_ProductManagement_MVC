@@ -1,0 +1,135 @@
+﻿@model WebProduct.Models.Hesap
+
+@{
+    ViewBag.Title = "HesapAyar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    
+    <style>
+        fieldset {
+            display: block;
+            margin-inline-start: 2px;
+            margin-inline-end: 2px;
+            padding-block-start: 0.35em;
+            padding-inline-start: 0.75em;
+            padding-inline-end: 0.75em;
+            padding-block-end: 0.625em;
+            min-inline-size: min-content;
+            border-width: 1px;
+            border-style: groove;
+            border-color: threedface;
+            border-image: initial;
+            margin-bottom:15px;
+        }
+        legend{
+            display: block;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+        font-size:12px;
+    width:auto;
+        }
+    </style>
+}
+
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Hesap Ayarları</div>
+            <div class="ibox-tools">
+            </div>
+        </div>
+        <div class="ibox-body">
+            <form action="/apayarlar/hesapayar" class="form-horizontal" id="hesap-form" method="post" novalidate="novalidate">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.HesapID)
+                <fieldset>
+                    <legend>Hesap Sahibi:</legend>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Yetki</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">@Model.Yetki</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Ad Soyad</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="AdSoyad" id="AdSoyad" value="@Model.AdSoyad">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Eposta Adresi</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="email" name="Eposta" id="Eposta" value="@Model.Eposta">
+                        </div>
+                    </div>
+                    
+                </fieldset>
+                <fieldset>
+                    <legend>Parola Yenile:</legend>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Eski Parola</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="Parola" id="Parola">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Yeni Parola</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="Parola1" id="Parola1">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Yeni Parola Tekrar</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="Parola2" id="Parola2">
+                        </div>
+                    </div>
+                </fieldset>
+               
+                <div class="form-group row">
+                    <div class="col-sm-10 ml-sm-auto">
+                        <button class="btn btn-info" type="submit">Değişiklikleri Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="backpage">
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+@section Scripts
+{
+    <script src="~/content/panel/vendors/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //CEO Form
+        $("#hesap-form").validate({
+            rules: {
+                AdSoyad: {
+                    required: !0
+                },
+                Eposta: {
+                    required: !0,
+                    email: !0
+                },
+                Parola1: {
+                },
+                Parola2: {
+                    equalTo: "#Parola1"
+                }
+            },
+            errorClass: "help-block error",
+            highlight: function (e) {
+                $(e).closest(".form-group.row").addClass("has-error")
+            },
+            unhighlight: function (e) {
+                $(e).closest(".form-group.row").removeClass("has-error")
+            },
+        });
+    </script>}

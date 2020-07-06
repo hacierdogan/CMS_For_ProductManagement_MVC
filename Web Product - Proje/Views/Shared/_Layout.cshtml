@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Site Baslik Max 70 Karakter -->
+    <title>@ViewBag.Title</title>
+    <meta itemprop="name" content="@ViewBag.Title" /><!--google icin-->
+    <meta property="og:title" content="@ViewBag.Title" /><!--facebook-->
+    <meta name="twitter:title" content="@ViewBag.Title" /><!--twitter-->
+
+    @{Html.RenderAction("_GoogleAnalytics", "Home");}
+    <!-- Suanki Sayfa (ayni sayfalar için)-->
+    <link rel="canonical" href="" />
+    <!--===================================================-->
+    <!-- Favicon -->
+    <link rel="icon" href="/content/images/logo/favicon.png" />
+
+    <!-- Normalize ve Reset CSS -->
+    <link href="~/content/plugins/normalizereset/normalize.css" rel="stylesheet" />
+    <link href="~/content/plugins/normalizereset/reset.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="~/content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- IE10 Bug -->
+    <link href="~/content/plugins/ie-bug/ie10-viewport-bug-workaround.css" rel="stylesheet" />
+
+    <!-- Fontawesome Icon -->
+    <link href="~/content/plugins/fa-icon/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- OWL Slider-->
+    <link href="~/content/plugins/owl-slider/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/content/plugins/owl-slider/css/owl.theme.default.min.css" rel="stylesheet" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Sablon CSS -->
+    <link href="~/content/files/css/sitesablon.css" rel="stylesheet" />
+
+    <!--Angular JS-->
+    <script src="~/content/plugins/angularjs/angular.min.js"></script>
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <!-- Loading -->
+    <div class="pageloader" id="pageloader">
+        <div class="pageloading">
+            <img src="/content/images/logo/yukleniyor.png" class="img-responsive">
+        </div>
+        <svg width="200" height="200" viewBox="0 0 100 100">
+            <polyline class="line-cornered stroke-still" points="0,0 100,0 100,100" stroke-width="10" fill="none"></polyline>
+            <polyline class="line-cornered stroke-still" points="0,0 0,100 100,100" stroke-width="10" fill="none"></polyline>
+            <polyline class="line-cornered stroke-animation" points="0,0 100,0 100,100" stroke-width="10" fill="none"></polyline>
+            <polyline class="line-cornered stroke-animation" points="0,0 0,100 100,100" stroke-width="10" fill="none"></polyline>
+        </svg>
+    </div>
+    <!-- /Loading -->
+    <!-- TopBar -->
+    @{Html.RenderAction("Topbar", "Home");}
+    <!-- /TopBar -->
+    <!-- Menu -->
+    @{Html.RenderAction("Menu", "Home");}
+    <!-- /Menu -->
+    <!-- Content -->
+    <div class="section-content">
+        @RenderBody()
+    </div>
+    <!-- /Content -->
+    <!-- Footer -->
+    @{Html.RenderAction("Footer", "Home");}
+    <!-- /Footer -->
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="copysec">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="text-left copysol">
+                            Copyright © @DateTime.Now.Year Tüm hakları saklıdır
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="text-right copysag">
+                            <a href="https://www.instagram.com/hacierdogann/" target="_blank" data-toggle="tooltip" title="Hacı Erdoğan">HE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Copyright -->
+    <!-- Yukari -->
+    <a href="#" class="back-to-top"><i class="fa fa-arrow-up"></i></a>
+    <!--=========================================================================-->
+    <!-- IE9 Kullananların hata alması durumda, devreye girecek olan JS dosyası. -->
+    <!--[if lt IE 9]><script src="plugins/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="~/content/plugins/ie-bug/ie-emulation-modes-warning.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Bootstrap JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="~/content/plugins/bootstrap/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="~/content/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- IE10 bug JS -->
+    <script src="~/content/plugins/ie-bug/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Arama JS -->
+    <script src="~/content/files/js/arama.js"></script>
+
+    <!-- Yukari Cik JS -->
+    <script src="~/content/files//js/yukari-cik.js"></script>
+
+    <!-- Yukleniyor JS -->
+    <script src="~/content/files//js/yukleniyor.js"></script>
+
+    <!-- Owl Slider -->
+    <script src="~/content/plugins/owl-slider/js/owl.carousel.js"></script>
+
+    <!-- Page JS -->
+    <script src="~/content/files/js/pagescript.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

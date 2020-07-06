@@ -1,0 +1,58 @@
+﻿@{
+    WebProduct.Models.DataContext db = new WebProduct.Models.DataContext();
+    int mesajadet = db.Mesajlars.Where(w => w.Bildirim == true).Count();
+}
+<div id="sidebar-collapse">
+    <div class="admin-block d-flex">
+        <div>
+            <img src="~/content/panel/images/user.jpg" class="img-circle" width="45" />
+        </div>
+        <div class="admin-info">
+            <div class="font-strong">@Session["ManagerAdmin"]</div><small>Administrator</small>
+        </div>
+    </div>
+    <ul class="side-menu metismenu">
+        <li>
+            <a class="active" href="/apmanager">
+                <i class="sidebar-item-icon fa ti-bar-chart"></i>
+                <span class="nav-label">Gösterge Paneli</span>
+            </a>
+        </li>
+        <li>
+            <a class="active" href="/" target="_blank">
+                <i class="sidebar-item-icon fa ti-layout"></i>
+                <span class="nav-label">Siteye Git</span>
+            </a>
+        </li>
+        <li class="heading">Sayfalar</li>
+        <li>
+            <a href="/apkategoriler">
+                <i class="sidebar-item-icon fa fa-sitemap"></i>
+                <span class="nav-label">Kategoriler</span>
+            </a>
+        </li>
+        <li>
+            <a href="/apurunler">
+                <i class="sidebar-item-icon fa ti-package"></i>
+                <span class="nav-label">Ürünler</span>
+            </a>
+        </li>
+        <li>
+            <a href="/apmanager/mesajlar/gelenmesajlar">
+                <i class="sidebar-item-icon fa fa fa-envelope"></i>
+                <span class="nav-label">Mesajlar</span>
+                @if (mesajadet>0)
+                {
+                <span class="badge badge-primary badge-circle arrow">@mesajadet</span>
+                }
+               
+            </a>
+        </li>
+        <li>
+            <a href="/apayarlar">
+                <i class="sidebar-item-icon fa fa-cog"></i>
+                <span class="nav-label">Ayarlar</span>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,20 @@
+﻿@model WebProduct.Models.Sayfalar
+@{
+    ViewBag.Title = "Gizlilik Politikası";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container bgw">
+    <div class="content-sec">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="urunler-title">
+                    <span>@Model.SayfaBaslik</span>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                @Html.Raw(Model.SayfaIcerik)
+            </div>
+        </div>
+    </div>
+</div>

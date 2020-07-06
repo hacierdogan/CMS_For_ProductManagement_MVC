@@ -1,0 +1,87 @@
+﻿@model IEnumerable<WebProduct.Models.Urunler>
+@{
+    ViewBag.Title = "Ürünler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    <link href="~/content/panel/vendors/datatable/datatables.min.css" rel="stylesheet" />
+}
+
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Ürünler</div>
+            <div class="ibox-tools">
+                <a href="/apurunler/urunekle"><div class="btn btn-outline-primary"><i class="fa fa-plus-square-o"></i> Yeni Ürün Ekle </div></a>
+            </div>
+        </div>
+        <div class="ibox-body" style="padding:15px 0px 20px 0px">
+            <table class="table table-responsive table-hover uruntablo" id="urundatatablo" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="text-center">Resim</th>
+                        <th>Ürün Adı</th>
+                        <th class="hidden-xs">Kategori</th>
+                        <th>Durum</th>
+                        <th class="text-center uruntablo-btn">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="tablores"><img src="@item.Resim1" width="50" /></td>
+                            <td>@item.UrunAdi</td>
+                            <td class="hidden-xs">@item.Kategoriler.KategoriAdi</td>
+                            <td>
+                                @if (@item.Durum == true)
+                                {
+                                    <span class="badge badge-success">Aktif</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">Pasif</span>
+                                }
+                            </td>
+                            <td class="text-center uruntablo-btn">
+                                <div class="btn-group">
+                                    <a href="/apurunler/duzenle/@item.UrunURL" class="btn btn-outline-default" title="Düzenle"><i class="fa ti-pencil-alt"></i></a>
+                                    <a href="/apurunler/sil/@item.UrunURL" class="btn btn-outline-default" title="Sil"><i class="fa fa-trash"></i></a>
+                                    <a href="/urunler/@item.Kategoriler.KategoriURL/@item.UrunURL" class="btn btn-outline-default" title="Ürüne git" target="_blank"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                    @*<tr>
+                            <td class="tablores"><img src="~/upload/car4.jpg" width="50" /></td>
+                            <td>Lorem ıpsum dolor sit amet</td>
+                            <td class="hidden-xs">Kategori_1</td>
+                            <td class="text-center uruntablo-btn">
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-outline-default" title="Düzenle"><i class="fa ti-pencil-alt"></i></a>
+                                    <a href="#" class="btn btn-outline-default" title="Sil"><i class="fa fa-trash"></i></a>
+                                    <a href="#" class="btn btn-outline-default" title="Ürüne git" target="_blank"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </td>
+                        </tr>*@
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+
+    <script src="~/content/panel/vendors/datatable/datatables.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('#urundatatablo').DataTable({
+            pageLength: 10,
+            "paging": true,
+            "ordering": false,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+            }
+        });
+    </script>
+}

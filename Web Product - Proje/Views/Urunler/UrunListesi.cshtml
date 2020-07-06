@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Urun_Kategorileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container bgw">
+    <div class="content-sec">
+        <div class="row ">
+            <div class="col-xs-12 col-sm-4 col-md-3 asidemenu">
+                @{
+                    Html.RenderAction("SolMenu", "Urunler");
+                }
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9">
+                <div class="urunler-title">
+                    <span>@ViewBag.kategoriadi</span>
+                </div>
+
+                <div class="row">
+                    @model IEnumerable<WebProduct.Models.Urunler>
+                    @if (Model.Count() == 0)
+                    {
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <h5>Bu kategoriye ait ürün bulunmamaktadır.</h5>
+                        </div>
+                    }                     
+                    @foreach (var urun in Model)
+                    {
+                    <div class="col-xs-6 col-sm-6 col-md-4">
+                        <a href="/urunler/@urun.Kategoriler.KategoriURL/@urun.UrunURL">
+                            <div class="urun-item">
+                                <div class="urun-resim">
+                                    @if (urun.YeniUrun == true)
+                                    {
+                                        <img class="yeniurun" src="/Content/images/yeni.png" />
+                                    }
+                                    <img src="@urun.Resim1" class="img-responsive urunfoto" alt="@urun.UrunAdi" />
+                                </div>
+                                <div class="urun-kategori">
+                                   @urun.Kategoriler.KategoriAdi
+                                </div>
+                                <div class="urun-adi">
+                                    <span>
+                                        @urun.UrunAdi
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

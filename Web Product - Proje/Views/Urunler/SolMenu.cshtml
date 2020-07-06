@@ -1,0 +1,18 @@
+﻿@model IEnumerable<WebProduct.Models.Kategoriler>
+<div class="kategori-b">
+    @ViewBag.solmenubaslik
+</div>
+<ul class="kategori-menu">
+    @foreach (var ustkategori in Model.Where(w => w.UstKategori == 0).ToList())
+    {
+        <li class="kategori-item">
+            <span>@ustkategori.KategoriAdi</span>
+            <ul class="altkategorilist">
+                @foreach (var altkategori in Model.Where(w => w.UstKategori == ustkategori.KategoriID).ToList())
+                {
+                    <li><a href="/urunler/@altkategori.KategoriURL">@altkategori.KategoriAdi</a></li>
+                }
+            </ul>
+        </li>
+    }
+</ul>

@@ -1,0 +1,127 @@
+﻿@model WebProduct.Models.Kategoriler
+
+@{
+    ViewBag.Title = "KategoriDuzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Kategori Ekle</div>
+            <div class="ibox-tools">
+                <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+            </div>
+        </div>
+        <div class="ibox-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.KategoriID)
+                <div class="form-horizontal">
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Kategori Adı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="KategoriAdi" name="KategoriAdi" value="@Model.KategoriAdi" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Kategori URL</label>
+                        <div class="col-sm-10" id="formurl">
+                            @*<input class="form-control" type="text" id="KategoriURL" name="KategoriURL" />*@
+                            <div class="input-group-icon left">
+                                <div class="input-icon" id="formurlicon"></div>
+                                <input class="form-control" type="text" id="KategoriURL" name="KategoriURL" value="@Model.KategoriURL" style="pointer-events:none;" required>
+                                <span class="help-block text-danger" id="urlhata"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Üst Kategori</label>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("UstKategori", null, htmlAttributes: new { @class = "form-control" })                          
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Kategori Sırasi</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="Sira" name="Sira" value="@Model.Sira" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Sitede Göster</label>
+                        <div class="col-sm-10">
+                            <label class="chkswitch">
+                                <input type="checkbox" id="KDurum" name="KDurum" checked="@Model.Durum">
+                                <span class="swtslider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 ml-sm-auto">
+                            <button class="btn btn-info" type="submit" id="kategorieklebtn">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="backpage">
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#KategoriAdi').keyup(function () {
+            var deger = $('#KategoriAdi').val();
+            urlduzenle(deger);
+        });
+        $('#KategoriAdi').keydown(function () {
+            var deger = $('#KategoriAdi').val();
+            urlduzenle(deger);
+        });
+
+        function urlduzenle(urunadi) {
+            var karakterler = { Ç: 'c', Ö: 'o', Ş: 's', İ: 'i', I: 'i', Ü: 'u', Ğ: 'g', ç: 'c', ö: 'o', ş: 's', ı: 'i', ü: 'u', ğ: 'g', " ": '-' };
+            var stringtoarray = urunadi.split('');
+            for (var i = 0; i < stringtoarray.length; i++) {
+                stringtoarray[i] = karakterler[stringtoarray[i]] || stringtoarray[i];
+            }
+            var arraytostring = stringtoarray.join('');
+            var temizurl = arraytostring.replace(" ", "-").replace("--", "-").toLowerCase();
+
+            $.ajax({
+                url: '/APKategoriler/UrlKontrol',
+                type: 'POST',
+                data: { url: temizurl },
+                dataType: 'json',
+                success: function (data) {
+                    if (data == true) {
+                        $("#formurl").removeClass("has-error");
+                        $("#formurl").addClass("has-success");
+                        $("#urlhata").html("");
+                        $("#kategorieklebtn").prop("disabled", false);
+                        $("#formurlicon").html("<i class='fa fa-check text-success'></i>");
+                    }
+                    else {
+                        $("#formurl").removeClass("has-success");
+                        $("#formurl").addClass("has-error");
+                        $("#urlhata").html("Bu url adresi zaten mevcut");
+                        $("#kategorieklebtn").prop("disabled", true);
+                        $("#formurlicon").html("<i class='fa fa-warning text-danger'></i>");
+                    }
+                }
+            });
+
+            $('#KategoriURL').val(temizurl);
+        }
+    })
+    </script>
+}

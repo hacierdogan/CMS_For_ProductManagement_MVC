@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Ürün Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container bgw">
+    <div class="content-sec">
+        <div class="row ">
+            <div class="col-xs-12 col-sm-4 col-md-3 asidemenu">
+                @{Html.RenderAction("SolMenu", "Urunler");}
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9">
+                <div class="urunler-title">
+                    <span>@ViewBag.kategoriadi</span>
+                </div>
+                @model WebProduct.Models.Urunler
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-5">
+                        <div class="urun-galeri" ng-app="galeriapp" ng-controller="gallericontrol">
+                            <div class="galeri-resim">
+                                <img ng-src="{{resimyolu}}" class="img-responsive" alt="@Model.UrunAdi" />
+                            </div>
+                            <div class="galeri-item">
+                                <img resimbutton ng-src="@Model.Resim1"/>
+                                @if (Model.Resim2 != null)
+                                {
+                                    <img resimbutton ng-src="@Model.Resim2" />
+                                }
+                                @if (Model.Resim3 != null)
+                                {
+                                    <img resimbutton ng-src="@Model.Resim3" />
+                                }
+                                @if (Model.Resim4 != null)
+                                {
+                                    <img resimbutton ng-src="@Model.Resim4" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-7">
+                        <div class="urun-bilgi">
+                            <div class="urun-ad">@Model.UrunAdi</div>
+                            <div class="urun-aciklama">@Model.UrunAciklama</div>
+                            <ul class="urun-ozellik">
+                                @foreach (var item in Model.UrunOzellik.Split(','))
+                                {
+                                    string[] ozellik = item.Split('=');
+                                    <li><span>@ozellik[0].ToString()</span> @ozellik[1].ToString()</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="urunler-title" style="margin:15px 0px 20px 0px;">
+                            <span> @ViewBag.BenzerBaslik </span>
+                        </div>
+                        @{Html.RenderAction("BenzerUrunler", "Urunler", new { id = Model.Kategoriler.KategoriURL, urunno =Model.UrunID});}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    var myapp = angular.module("galeriapp", []);
+    myapp.controller("gallericontrol", function ($scope) {
+        $scope.resimyolu = "@Model.Resim1";
+    });
+    myapp.directive("resimbutton", function () {
+        return {
+            link: function ($scope, $element, $attr) {
+                $element.on("click", function () {
+                    $scope.resimyolu = $attr.ngSrc;
+                    $scope.$digest();//digest ile ekranada yazdırdık. => sadece scope için
+                });
+            }
+        }
+    });
+</script>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebProduct.Models.Kategoriler>
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="100">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobilmenu">
+                MENU
+            </button>
+            <a class="navbar-brand" href="index.html">
+                <img src="@ViewBag.menulogo" alt="logo" class="img-responsive">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="mobilmenu">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="nav-item" id="navhomebtn">
+                    <a href="/" class="nav-link" data-toggle="" aria-expanded="false">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                @foreach (var ustkategori in Model.Where(w=>w.UstKategori==0).ToList())
+                {
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">@ustkategori.KategoriAdi</a>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                            @foreach (var altkategori in Model.Where(w => w.UstKategori == ustkategori.KategoriID).ToList())
+                            {
+                                <li class="dropdown-item"><a href="/urunler/@altkategori.KategoriURL">@altkategori.KategoriAdi</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+                @*<li class="nav-item">
+                    <a href="/giris" class="nav-link" data-toggle="" aria-expanded="false">Admin Giriş</a>
+                </li>*@
+            </ul>
+        </div>
+    </div>
+</nav>

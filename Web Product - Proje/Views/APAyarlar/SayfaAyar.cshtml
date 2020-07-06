@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebProduct.Models.Sayfalar>
+
+@{
+    ViewBag.Title = "SayfaAyarlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Sayfa Ayarları</div>
+            <div class="ibox-tools">
+                
+            </div>
+        </div>
+        <div class="ibox-body" style="padding:15px 0px 20px 0px">
+
+            <table class="table table-responsive table-hover uruntablo" id="urundatatablo" cellspacing="0">
+                <thead class="thead-default">
+                    <tr>
+                        <th>Sayfa Adı</th>
+                        <th class="text-center uruntablo-btn"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.SayfaBaslik</td>
+                            <td class="text-center uruntablo-btn">
+                                <div class="btn-group">
+                                    <a href="/apayarlar/sayfaduzenle/@item.SayfaBaslik" class="btn btn-outline-default" title="Düzenle"><i class="fa ti-pencil-alt"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

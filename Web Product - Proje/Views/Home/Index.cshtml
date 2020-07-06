@@ -1,0 +1,115 @@
+﻿@model WebProduct.Models.HomeMultiModel
+@{
+    ViewBag.Title = "Anasayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.popup.Baslangic <= DateTime.Now && Model.popup.Bitis >= DateTime.Now)
+{
+    <input type="hidden" id="popupgoster" value="@Model.popup.Durum.ToString()">
+}
+<div class="modal fade popup" id="sitemodal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <span class="modal-title">@Model.popup.Baslik</span>
+            </div>
+            <div class="modal-body">
+                @if (Model.popup.ResimDurum == true)
+                {
+                    <img src="@Model.popup.Resim" class="img-responsive" alt="image" />
+                }
+                @Html.Raw(Model.popup.Icerik)
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="container bgw">
+    <div class="content-sec">
+        <div class="row er home-sec-header">
+            <div class="col-xs-12 col-md-4 ec">
+                <div class="home-res" style="background-image:url('@Model.sabitler.HomeRes')">
+                    <div class="home-res-txt">
+                        <h3>@Model.sabitler.HomeResBaslik</h3>
+                        <a href="@Model.sabitler.HomeResURL" class="home-res-btn">Tıklayın <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-8 ec">
+                <div class="slider">
+                    <div id=" homecarousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            @for (int i = 0; i < Model.homeslider.Count(); i++)
+                            {
+                                if (i == 0)
+                                {
+                                    <li data-target="#homeCarousel" data-slide-to="@i" class="active"></li>
+                                }
+                                else
+                                {
+                                    <li data-target="#homeCarousel" data-slide-to="@i"></li>
+                                }
+                            }
+                        </ol>
+                        <div class="carousel-inner">
+                            @{
+                                var sliderArray = Model.homeslider.ToArray();
+                                for (int i = 0; i < sliderArray.Count(); i++)
+                                {
+                                    if (i == 0)
+                                    {
+                                        <div class="item active">
+                                            <img src="@sliderArray[i].ResimURL" alt="resim" class="img-responsive">
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <img src="@sliderArray[i].ResimURL" alt="resim" class="img-responsive">
+                                        </div>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Onecikan Urunler -->
+        @{Html.RenderAction("OneCikanlar", "Home");}
+    </div>
+</div>
+@section Scripts{
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+
+    var pageNo = 1;
+    var sayfaPost = true;
+
+    $("#dahafazlabtn").click(function getir() {
+        if (sayfaPost) {
+            $("#load").show();
+            $("#dahafazlabtn").hide();
+            $.ajax({
+                url: "/Home/OneCikanlar",
+                data: { page: pageNo },
+                success: function (data) {
+                    $("#urunvitrin").append(data);
+                    pageNo++;
+                    $("#load").hide();
+                    $("#dahafazlabtn").show();
+                    if ($.trim(data) == '') {
+                        sayfaPost = false;
+                        $("#dahafazlabtn").hide();
+                    }
+                }
+            });
+        }
+
+    });
+    </script>
+}

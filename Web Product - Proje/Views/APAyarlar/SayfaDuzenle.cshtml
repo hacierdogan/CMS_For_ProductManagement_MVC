@@ -1,0 +1,75 @@
+﻿@model WebProduct.Models.Sayfalar
+
+@{
+    ViewBag.Title = "SayfaDuzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/content/panel/vendors/editor-summernote/dist/summernote.css" rel="stylesheet" />
+}
+
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Sayfa Düzenle</div>
+            <div class="ibox-tools">
+                <a class="fullscreen-link"><i class="fa fa-expand"></i></a>
+            </div>
+        </div>
+        <div class="ibox-body">
+
+            <form action="/apayarlar/sayfaduzenle" class="form-horizontal" enctype="multipart/form-data" method="post">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.SayfaID)
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Sayfa Başlık</label>
+                    <div class="col-sm-10">
+                        <label class="col-form-label">@Model.SayfaBaslik</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Sayfa İçerik</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="SayfaIcerik" name="SayfaIcerik">@Model.SayfaIcerik</textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10 ml-sm-auto">
+                        <button class="btn btn-info" type="submit">Değişiklikleri Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="backpage">
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+@section Scripts
+{
+
+<script src="~/content/panel/vendors/editor-summernote/dist/summernote.min.js"></script>
+    <script src="~/content/panel/vendors/editor-summernote/dist/lang/summernote-tr-TR.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#SayfaIcerik').summernote({
+                lang: 'tr-TR',
+                placeholder: 'HTML içeriği girin',
+                fontSizeUnits: ['px'],
+                minHeight: 200,
+                maxHeight: 500,
+                spellCheck: false,
+                toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline','italic', 'clear']],
+              ['color', ['color']],
+               ['fontname', ['fontname','fontsize', 'height']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['hr', ['hr', 'superscript', 'subscript']],
+              ['insert', ['link', 'picture', 'table']],
+              ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+        });
+    </script>
+}

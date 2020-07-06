@@ -1,0 +1,124 @@
+﻿@model IEnumerable<WebProduct.Models.Mesajlar>
+@{
+    ViewBag.Title = "Mesajlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/content/panel/css/pages/mailbox.css" rel="stylesheet" />
+
+    <link href="~/content/panel/vendors/datatable/datatables.min.css" rel="stylesheet" />
+}
+<div class="page-heading">
+    <h1 class="page-title">Mesajlar</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+        <li class="breadcrumb-item">@ViewBag.mesajpagebaslik</li>
+    </ol>
+</div>
+<div class="page-content fade-in-up">
+    <div class="row">
+        <div class="col-lg-3 col-md-4">
+            @Html.Partial("MesajSolmenu")
+        </div>
+        <div class="col-lg-9 col-md-8">
+            <div class="ibox" id="mailbox-container">
+                <div class="mailbox-header">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="d-none d-lg-block inbox-title">
+                            <i class="fa fa-envelope-o m-r-5"></i> @ViewBag.mesajpagebaslik
+                        </h5>
+                        <div class="mail-search text-right">
+                            @if (ViewBag.mesajpagebaslik == "Silinen Mesajlar")
+                            {
+                                <a href="/apmanager/mesajtemizle/tumunusil" class="btn btn-xs btn-danger">Tümünü Sil</a>}
+                        </div>
+                    </div>
+                </div>
+                <div class="mailbox clf" style="min-height:300px;padding-bottom:15px;">
+                    @*<table class="table table-hover table-inbox" id="table-inbox">*@
+                    <table class="table table-responsive table-hover table-inbox" id="mesajlardatatablo" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Gönderen</th>
+                                <th>Eposta</th>
+                                <th></th>
+                                @if (ViewBag.mesajpagebaslik == "Silinen Mesajlar")
+                                {
+                                    <th></th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody class="rowlinkx" data-link="row">
+                            @foreach (var item in Model)
+                            {
+
+                                DateTime timeValue = Convert.ToDateTime(item.Tarih);
+                                TimeSpan time = DateTime.Now - timeValue;
+                                int day = time.Days;
+                                int hour = time.Hours;
+                                int min = time.Minutes;
+                                int sec = time.Seconds;
+
+                                string value = "";
+                                if (day > 2) { value = timeValue.ToString(" dd MMMM yyyy"); }
+                                else if (day <= 2 && day != 0) { value = day + " gün önce"; }
+                                else if (hour != 0) { value = hour + " saat önce"; }
+                                else if (min != 0) { value = min + " dk önce"; }
+                                else if (sec < 60 && sec >= 30) { value = " Az önce"; }
+                                else if (sec < 30 && sec >= 0) { value = " Şimdi"; }
+
+                                if (item.Bildirim == true)
+                                {
+                                    <tr class="unread" data-id="@item.MesajID">
+                                        <td class="rowlink-skip"><i class="fa fa-envelope"></i></td>
+                                        <td>
+                                            <a href="/apmanager/mesajoku/@item.MesajID">@item.GonderenAdSoyad</a>
+                                        </td>
+                                        <td class="mail-message">@item.Eposta</td>
+                                        <td class="text-right">@value</td>
+                                        @if (ViewBag.mesajpagebaslik == "Silinen Mesajlar")
+                                        {
+                                            <td width="50"><a href="/apmanager/mesajtemizle/@item.MesajID" class="btn btn-xs btn-danger">Sil</a></td>
+                                        }
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr data-id="@item.MesajID">
+                                        <td class="rowlink-skip"><i class="fa fa-envelope-open-o"></i></td>
+                                        <td>
+                                            <a href="/apmanager/mesajoku/@item.MesajID">@item.GonderenAdSoyad</a>
+                                        </td>
+                                        <td class="mail-message">@item.Eposta</td>
+                                        <td class="text-right">@value</td>
+                                        @if (ViewBag.mesajpagebaslik == "Silinen Mesajlar")
+                                        {
+                                            <td width="50"><a href="/apmanager/mesajtemizle/@item.MesajID" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></a></td>
+                                        }
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+
+    <script src="~/content/panel/vendors/datatable/datatables.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('#mesajlardatatablo').DataTable({
+            pageLength: 10,
+            "paging": true,
+            "ordering": false,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+            }
+        });
+    </script>
+}

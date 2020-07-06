@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WebProduct.Models.Urunler>
+@foreach (var urun in Model)
+{
+    <div class="col-xs-6 col-sm-4 col-md-3">
+        <a href="/urunler/@urun.Kategoriler.KategoriURL/@urun.UrunURL">
+            <div class="urun-item">
+                <div class="urun-resim">
+                    @if (urun.YeniUrun == true)
+                    {
+                        <img class="yeniurun" src="/Content/images/yeni.png" />
+                    }
+                    <img src="@urun.Resim1" class="img-responsive urunfoto" alt="urun" />
+                </div>
+                <div class="urun-kategori">
+                    @urun.Kategoriler.KategoriAdi
+                </div>
+                <div class="urun-adi">
+                    <span>
+                        @urun.UrunAdi
+                    </span>
+                </div>
+            </div>
+        </a>
+    </div>
+}

@@ -1,0 +1,26 @@
+﻿@model WebProduct.Models.Ceo
+
+@{
+    ViewBag.Title = Model.SiteBaslik;
+}
+<meta property="og:locale" content="tr_TR" />
+<meta http-equiv="content-language" content="tr" /><!--Site varsayılan dili -->
+<meta name="robots" content="index, follow" /><!--Sayfanın arama motorlarında listelenip listelenmemesi. Panel için -> content="noindex,nofollow" yazılmalıdır. -->
+
+<meta name="owner" content="@Model.SiteSahip" /><!--Site sahibi-->
+<meta name="Author" content="@Model.SiteYonetici" /><!--site yoneticisi-->
+<meta name="Copyright" content="@Model.SiteKurulus" /><!--Sitenin kuruldugu yil "(c)2019" -->
+<meta name="Abstract" content="@Model.SiteAciklama" /><!--Sitenizin özetinin kısa bilgisini verir.-->
+<!-- Site Resim -->
+<meta itemprop="image" content="" /><!--google icin image-->
+<meta name="twitter:image:src" content="" /><!--twitter icin image-->
+<meta property="og:image" content="" /><!--facebook icin image-->
+<!-- Anahtar Kelimeler Max 5 Kelime -->
+<meta name="keywords" content="@Model.SiteKeys" />
+<!-- Site Aciklamasi Max 115 Karakter -->
+<meta name="description" content="@Model.SiteAciklama" />
+<meta itemprop="description" content="@Model.SiteAciklama"><!--google icin-->
+<meta property="og:description" content="@Model.SiteAciklama" /><!--facebook icin-->
+<meta name="twitter:description" content="@Model.SiteAciklama" /><!--twitter icin-->
+
+@Html.Raw(Model.GoogleAnalytics)

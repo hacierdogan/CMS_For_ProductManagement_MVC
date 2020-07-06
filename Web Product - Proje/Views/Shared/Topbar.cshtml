@@ -1,0 +1,47 @@
+﻿@model WebProduct.Models.FirmaBilgi
+<div class="section0">
+    <div class="container">
+        <div class="sec0">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="top-list">
+                        <div class="top-list-item">
+                            <i class="fa fa-envelope"></i> <span>@Model.FirmaMail</span>
+                        </div>
+                        <div class="top-list-item">
+                            <i class="fa fa-phone"></i> <span>@Model.FirmaTel</span>
+                        </div>
+                        <div class="top-list-item">
+                            <i class="fa fa-map-marker"></i> <span>@Model.FirmaAdres</span>
+                        </div>
+                    </div>
+                    <div class="top-menu">
+                        <a href="/kurumsal/hakkimizda">Hakkımızda</a>
+                        <a href="/iletisim">İletişim</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section1">
+    <div class="container">
+        <div class="sec1">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="sec1-logo">
+                        <img src="@Model.FirmaLogo" alt="@Model.FirmaAdi" />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="sec1-form">
+                        <form action="/home/urunara" method="post">
+                            <input type="text" id="aramaurunadi" name="aramaurunadi" class="sec1-input" placeholder="@ViewBag.aramaplaceholder" required>
+                            <button type="submit" class="sec1-btn" id="aramabutton">@ViewBag.aramabutton</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

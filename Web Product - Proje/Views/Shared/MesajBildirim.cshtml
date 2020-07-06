@@ -1,0 +1,56 @@
+﻿@{
+    WebProduct.Models.DataContext db = new WebProduct.Models.DataContext();
+    var mesajlist = db.Mesajlars.Where(w => w.Bildirim == true).OrderByDescending(o=>o.MesajID).ToList();
+}
+
+<a class="nav-link dropdown-toggle" data-toggle="dropdown">
+    <i class="fa fa-envelope-o"></i>
+    @if (mesajlist.Count() > 0)
+    {
+        <span class="badge badge-primary envelope-badge"> @mesajlist.Count()</span>
+    }
+
+</a>
+<ul class="dropdown-menu dropdown-menu-right dropdown-menu-media">
+    <li class="dropdown-menu-header">
+        <div>
+
+            <span><strong>@mesajlist.Count()</strong> Yeni Mesaj</span>
+            <a class="pull-right" href="/apmanager/mesajlar/gelenmesajlar">Tümü</a>
+        </div>
+    </li>
+    <li class="list-group list-group-divider scroller mesajbildirimmenu" data-height="240px" data-color="#71808f">
+        @foreach (var item in mesajlist)
+        {
+            <a class="list-group-item" href="/apmanager/mesajoku/@item.MesajID">
+                <div class="media">
+                    @*<div class="media-img">
+                            <img src="~/content/panel/images/user.jpg" class="img-circle" />
+                        </div>*@
+                    <div class="media-body">
+                        <div class="font-strong">@item.GonderenAdSoyad</div>
+                        @{
+            DateTime timeValue = Convert.ToDateTime(item.Tarih);
+            TimeSpan time = DateTime.Now - timeValue;
+            int day = time.Days;
+            int hour = time.Hours;
+            int min = time.Minutes;
+            int sec = time.Seconds;
+
+            string value = "";
+            if (day > 2) { value = timeValue.ToString(" dd MMMM yyyy"); }
+            else if (day <= 2 && day != 0) { value = day + " gün önce"; }
+            else if (hour != 0) { value = hour + " saat önce"; }
+            else if (min != 0) { value = min + " dk önce"; }
+            else if (sec < 60 && sec >= 30) { value = " Az önce"; }
+            else if (sec < 30 && sec >= 0) { value = " Şimdi"; }
+                        }
+
+                        <small class="text-muted float-right">@value.ToString()</small>
+                        <div class="font-13">@item.Eposta</div>
+                    </div>
+                </div>
+            </a>
+        }
+    </li>
+</ul>

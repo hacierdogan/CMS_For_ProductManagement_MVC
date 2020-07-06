@@ -1,0 +1,36 @@
+﻿
+<form action="/apayarlar/sosyalmedyaekle" id="sm-form" class="form-horizontal smekleform" novalidate="novalidate" enctype="multipart/form-data" method="post">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <input type="hidden" name="MedyaID" id="MedyaID" value="0" />
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Medya Adı</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="MedyaAdi" id="MedyaAdi" placeholder="Medya kimliği">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">İkon Class</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="MedyaClass" id="MedyaClass" placeholder="fa fa-xxx">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Medya URL</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="MedyaUrl" id="MedyaUrl" placeholder="Profil url adresi">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Buton Sırası</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="MedyaSirasi" id="MedyaSirasi" placeholder="Görünüm sıralaması">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10 ml-sm-auto">
+            <a href="javascript:temizle();" class="btn btn-info" id="iptalbtn" style="display:none;">İptal</a>
+            <button class="btn btn-info" type="submit" id="eklebtn">Kaydet</button>
+        </div>
+    </div>
+</form>

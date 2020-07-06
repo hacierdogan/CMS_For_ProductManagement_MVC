@@ -1,0 +1,237 @@
+﻿@model WebProduct.Models.Urunler
+
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Ürün Ekle </div>
+            <div class="ibox-tools">
+                <i class="fa fa-circle zrn" aria-hidden="true"></i> işaretli alanlar zorunludur.
+            </div>
+        </div>
+        <div class="ibox-body">
+@using (Html.BeginForm("UrunEkle", "APUrunler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+           
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "")
+                <div class="form-horizontal">
+                   
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Ürün Adı <i class="fa fa-circle zrn" aria-hidden="true"></i></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="UrunAdi" name="UrunAdi" placeholder="Ürün adını girin" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Urun URL <i class="fa fa-circle zrn" aria-hidden="true"></i></label>
+                        <div class="col-sm-10" id="formurl">
+                            <div class="input-group-icon left">
+                                <div class="input-icon" id="formurlicon"></div>
+                                <input class="form-control" type="text" id="UrunURL" name="UrunURL" placeholder="URL otomatik oluşturulur" style="pointer-events:none;" required>
+                                <span class="help-block text-danger" id="urlhata"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Kategori <i class="fa fa-circle zrn" aria-hidden="true"></i></label>
+                        <div class="col-sm-10">
+                            @*@Html.DropDownList("KategoriNo", null, htmlAttributes: new { @class = "form-control" })*@
+                            @Html.DropDownList("KategoriNo", new SelectList(ViewBag.KategoriNo, "Value", "Text"), "Kategori Seçiniz", new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Ürün Açıklama <i class="fa fa-circle zrn" aria-hidden="true"></i></label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="UrunAciklama" name="UrunAciklama" placeholder="Ürünü açıklayın" style="min-height:80px;" required></textarea>
+                            @*<input class="form-control" type="text" id="UrunAciklama" name="UrunAciklama" required />*@
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Ürün Özellikleri <i class="fa fa-circle zrn" aria-hidden="true"></i></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="UrunOzellik" name="UrunOzellik" value="Marka=XXX,Boyut=XXX,Renk=XXX,Ağırlık=XXX" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Ürün Resimleri</label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <span class="res-b">Ana Resim <i class="fa fa-circle zrn" aria-hidden="true"></i></span>
+                                    <img src="~/content/images/image.jpg" class="img-responsive " alt="Urun" id="Resim1img" />
+                                    <input type="file" name="Resim1" id="Resim1" value="" accept=".jpg,.png,.JPEG,.jpeg" class="fileuploadres" />
+                                    <label for="Resim1" class="resimsec"><i class="fa fa-plus-square-o"></i> Resim Seç</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span class="res-b">2. Resim</span>
+                                    <img src="~/content/images/image.jpg" class="img-responsive " alt="Urun" id="Resim2img" />
+                                    <input type="file" name="Resim2" id="Resim2" value="" accept=".jpg,.png,.JPEG,.jpeg" class="fileuploadres" />
+                                    <label for="Resim2" class="resimsec"><i class="fa fa-plus-square-o"></i> Resim Seç</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span class="res-b">3. Resim</span>
+                                    <img src="~/content/images/image.jpg" class="img-responsive " alt="Urun" id="Resim3img" />
+                                    <input type="file" name="Resim3" id="Resim3" value="" accept=".jpg,.png,.JPEG,.jpeg" class="fileuploadres" />
+                                    <label for="Resim3" class="resimsec"><i class="fa fa-plus-square-o"></i> Resim Seç</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span class="res-b">4. Resim</span>
+                                    <img src="~/content/images/image.jpg" class="img-responsive " alt="Urun" id="Resim4img" />
+                                    <input type="file" name="Resim4" id="Resim4" value="" accept=".jpg,.png,.JPEG,.jpeg" class="fileuploadres" />
+                                    <label for="Resim4" class="resimsec"><i class="fa fa-plus-square-o"></i> Resim Seç</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-9 col-sm-2 col-form-label">Yeni Ürün</label>
+                        <div class="col-3 col-sm-10">
+                            <label class="chkswitch">
+                                <input type="checkbox" id="YeniUrun" name="YeniUrun">
+                                <span class="swtslider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-9 col-sm-2 col-form-label">Öne Çıkanlara Ekle</label>
+                        <div class="col-3 col-sm-10">
+                            <label class="chkswitch">
+                                <input type="checkbox" id="OneCikar" name="OneCikar">
+                                <span class="swtslider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-9 col-sm-2 col-form-label">Sitede Göster</label>
+                        <div class="col-3 col-sm-10">
+                            <label class="chkswitch">
+                                <input type="checkbox" id="Durum" name="Durum">
+                                <span class="swtslider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 ml-sm-auto">
+                            <button class="btn btn-info" type="submit" id="eklebtn">Ekle</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="backpage">
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //ResimYukleJS
+            function resim1URL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#Resim1img').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#Resim1").change(function () {
+                resim1URL(this);
+            });
+            //---
+            function resim2URL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#Resim2img').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#Resim2").change(function () {
+                resim2URL(this);
+            });
+            //---
+            function resim3URL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#Resim3img').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#Resim3").change(function () {
+                resim3URL(this);
+            });
+            //--
+            function resim4URL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#Resim4img').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#Resim4").change(function () {
+                resim4URL(this);
+            });
+            //-----------------
+
+            $("select option:first-child").css("display", "none");
+            $('#UrunAdi').keyup(function () {
+                var deger = $('#UrunAdi').val();
+                urlduzenle(deger);
+            });
+            $('#UrunAdi').keydown(function () {
+                var deger = $('#UrunAdi').val();
+                urlduzenle(deger);
+            });
+
+            function urlduzenle(urunadi) {
+                var karakterler = { Ç: 'c', Ö: 'o', Ş: 's', İ: 'i', I: 'i', Ü: 'u', Ğ: 'g', ç: 'c', ö: 'o', ş: 's', ı: 'i', ü: 'u', ğ: 'g', " ": '-' };
+                var stringtoarray = urunadi.split('');
+                for (var i = 0; i < stringtoarray.length; i++) {
+                    stringtoarray[i] = karakterler[stringtoarray[i]] || stringtoarray[i];
+                }
+                var arraytostring = stringtoarray.join('');
+                var temizurl = arraytostring.replace(" ", "-").replace("--", "-").toLowerCase();
+
+                $.ajax({
+                    url: '/APUrunler/UrlKontrol',
+                    type: 'POST',
+                    data: { url: temizurl },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data == true) {
+                            $("#formurl").removeClass("has-error");
+                            $("#formurl").addClass("has-success");
+                            $("#urlhata").html("");
+                            $("#eklebtn").prop("disabled", false);
+                            $("#formurlicon").html("<i class='fa fa-check text-success'></i>");
+                        }
+                        else {
+                            $("#formurl").removeClass("has-success");
+                            $("#formurl").addClass("has-error");
+                            $("#urlhata").html("Bu url adresi zaten mevcut");
+                            $("#eklebtn").prop("disabled", true);
+                            $("#formurlicon").html("<i class='fa fa-warning text-danger'></i>");
+                        }
+                    }
+                });
+
+                $('#UrunURL').val(temizurl);
+            }
+        })
+    </script>
+}

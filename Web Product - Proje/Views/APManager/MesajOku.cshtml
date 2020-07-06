@@ -1,0 +1,66 @@
+﻿@model WebProduct.Models.Mesajlar
+@{
+    ViewBag.Title = "MesajOku";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/content/panel/css/pages/mailbox.css" rel="stylesheet" />
+}
+
+<div class="page-heading">
+    <h1 class="page-title">Mesajlar</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"><i class="la la-home font-20"></i></a>
+        </li>
+        <li class="breadcrumb-item">Tüm Mesajlar</li>
+    </ol>
+</div>
+<div class="page-content fade-in-up">
+    <div class="row">
+        <div class="col-lg-3 col-md-4">
+            @Html.Partial("MesajSolmenu")
+        </div>
+        <div class="col-lg-9 col-md-8">
+            <div class="ibox" id="mailbox-container">
+                <div class="mailbox-header d-flex justify-content-between" style="border-bottom: 1px solid #e8e8e8;">
+                    <div>
+                        <h5 class="inbox-title">@Model.GonderenAdSoyad</h5>
+                        <div class="m-t-5 font-13">
+                            <a class="text-muted" href="mailto:@Model.Eposta?Subject=FirmaAdı Mesajınıza Yanıt;body=@Model.Mesaj">@Model.Eposta</a>
+                        </div>
+                        <div class="p-r-10 font-13">@Model.Tarih</div>
+                    </div>
+                    <div class="inbox-toolbar m-l-20">
+                        @if (Model.Durum == true)
+                        {
+                            <a class="btn btn-default btn-sm" data-toggle="tooltip" data-original-title="Mail Gönder" href="mailto:@Model.Eposta?subject=Firmadan yanıt&amp;body=@Model.Mesaj"><i class="fa fa-reply"></i></a>
+                        }
+                        @if (Model.Durum == true)
+                        {
+                            <a class="btn btn-default btn-sm" data-toggle="tooltip" data-original-title="Sil" href="/apmanager/mesajsil/@Model.MesajID"><i class="fa fa-trash-o"></i></a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-warning btn-sm" data-toggle="tooltip" data-original-title="Geri Yükle" href="/apmanager/mesajsil/@Model.MesajID">Geri Yükle</a>
+    <a class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="Kalıcı Olarak Sil" href="/apmanager/mesajtemizle/@Model.MesajID">Kalıcı Olarak Sil</a>
+                        }
+                        @if (Model.Durum == true)
+                        {
+                            if (Model.Favori == false)
+                            {
+                                <a class="btn btn-default btn-sm" data-toggle="tooltip" data-original-title="Favilere Ekle" href="/apmanager/favorieklesil/@Model.MesajID"><i class="fa fa-star-o"></i></a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-warning btn-sm" data-toggle="tooltip" data-original-title="Favilerden Çıkar" href="/apmanager/favorieklesil/@Model.MesajID">Favorilerden Çıkar</a>
+                            }
+                        }
+
+                    </div>
+                </div>
+                <div class="mailbox-body" style="min-height:300px;">
+                    @Model.Mesaj
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

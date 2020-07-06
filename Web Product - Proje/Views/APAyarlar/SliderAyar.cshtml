@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WebProduct.Models.HomeSlider>
+
+@{
+    ViewBag.Title = "SliderAyar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Slider Ayarları</div>
+            <div class="ibox-tools">
+                
+            </div>
+        </div>
+        <div class="ibox-body" style="padding:15px 0px 20px 0px">
+            @Html.Partial("SliderEkle")
+            <table class="table table-responsive table-hover uruntablo" id="urundatatablo" cellspacing="0">
+                <thead class="thead-default">
+                    <tr>
+                        <th>Slider Resmi</th>
+                        <th class="text-center uruntablo-btn">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td><img src="@item.ResimURL" alt="slider" class="img-responsive" style="max-width:300px;margin:auto;"/></td>
+                            <td class="text-center uruntablo-btn">
+                                <div class="btn-group">
+                                    <a href="/apayarlar/slidersil/@item.SliderID" class="btn btn-outline-default" title="Sil"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="backpage">
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#srekle').attr('disabled', 'disabled');
+            //ResimYukleJS
+            function resim1URL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#SliderResimImg').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#SliderResim").change(function () {
+                $('#srekle').removeAttr('disabled');
+                resim1URL(this);
+            });
+        })
+
+    </script>
+    }

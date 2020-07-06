@@ -1,0 +1,166 @@
+﻿@model WebProduct.Models.Sabitler
+
+@{
+    ViewBag.Title = "SabitlerAyar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Site Sabit Ayarları</div>
+            <div class="ibox-tools">
+               
+            </div>
+        </div>
+        <div class="ibox-body">
+            <form action="/apayarlar/sabitlerayar" class="form-horizontal" id="sabit-form" novalidate="novalidate" enctype="multipart/form-data" method="post">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.SabitID)
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Arama Kutusu Mesajı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="AramaPlaceHolder" id="AramaPlaceHolder" value="@Model.AramaPlaceHolder">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Arama Buttonu Yazısı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="AramaButton" id="AramaButton" value="@Model.AramaButton">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Anasayfa Resim</label>
+                        <div class="col-sm-10">
+                            @*<input class="form-control" type="text" name="HomeRes" id="HomeRes" value="@Model.HomeRes">*@
+
+                            <div class="firmaayarlogo">
+                                @if (Model.HomeRes != null)
+                                {
+                                    <img src="@Model.HomeRes" class="img-responsive " alt="Urun" id="HomeResimImg" />
+                                }
+                                else
+                                {
+                                    <img src="~/content/images/1024x400.jpg" class="img-responsive " alt="Urun" id="HomeResimImg" />
+                                }
+                                <input type="file" name="HomeResim" id="HomeResim" value="" accept=".jpg,.png,.JPEG,.jpeg" class="fileuploadres" />
+                                <label for="HomeResim" class="resimsec"><i class="fa fa-refresh"></i> Resim Değiştir</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Anasayfa Resim Başlığı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="HomeResBaslik" id="HomeResBaslik" value="@Model.HomeResBaslik">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Anasayfa Resim URL</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="HomeResURL" id="HomeResURL" value="@Model.HomeResURL">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Öne Çıkanlar Başlığı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="HomeVitrinBaslik" id="HomeVitrinBaslik" value="@Model.HomeVitrinBaslik">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Kategoriler Başlığı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="SolMenuBaslik" id="SolMenuBaslik" value="@Model.SolMenuBaslik">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Benzer Ürünler Başlığı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="UrunOwlBaslik" id="UrunOwlBaslik" value="@Model.UrunOwlBaslik">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Arama Sonuç Başlığı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="AramaSonucBaslik" id="AramaSonucBaslik" value="@Model.AramaSonucBaslik">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">İletişim Başlığı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="IletisimBaslik" id="IletisimBaslik" value="@Model.IletisimBaslik">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 ml-sm-auto">
+                            <button class="btn btn-info" type="submit">Değişiklikleri Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+</div>
+    </div>
+</div>
+<div class="backpage">
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+@section Scripts
+{
+<script src="~/content/panel/vendors/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //CEO Form
+        $("#sabit-form").validate({
+            rules: {
+                AramaPlaceHolder: {
+                    required: !0
+                },
+                AramaButton: {
+                    required: !0
+                },
+                HomeResBaslik: {
+                    required: !0
+                },
+                HomeResURL: {
+                    required: !0
+                },
+                HomeVitrinBaslik: {
+                    required: !0
+                },
+                SolMenuBaslik: {
+                    required: !0
+                },
+                UrunOwlBaslik: {
+                    required: !0
+                },
+                AramaSonucBaslik: {
+                    required: !0
+                },
+                IletisimBaslik: {
+                    required: !0
+                }
+            },
+            errorClass: "help-block error",
+            highlight: function (e) {
+                $(e).closest(".form-group.row").addClass("has-error")
+            },
+            unhighlight: function (e) {
+                $(e).closest(".form-group.row").removeClass("has-error")
+            },
+        });
+
+
+
+        $(document).ready(function () {
+            //ResimYukleJS
+            function resim1URL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#HomeResimImg').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#HomeResim").change(function () {
+                resim1URL(this);
+            });
+        })
+    </script>}

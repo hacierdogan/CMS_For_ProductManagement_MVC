@@ -1,0 +1,146 @@
+﻿@model WebProduct.Models.Popup
+
+@{
+    ViewBag.Title = "PopupAyar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    <link href="~/content/panel/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    <link href="~/content/panel/vendors/editor-summernote/dist/summernote.css" rel="stylesheet" />
+}
+<div class="page-content fade-in-up">
+    <div class="ibox">
+        <div class="ibox-head">
+            <div class="ibox-title">Popup Ayarları</div>
+            <div class="ibox-tools">
+            </div>
+        </div>
+        <div class="ibox-body">
+
+            <form action="/apayarlar/popupayar" class="form-horizontal" enctype="multipart/form-data" method="post">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.PopupID)
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Popup Resim</label>
+                    <div class="col-sm-10">
+                        <div class="popupresimyukle">
+                            @if (Model.Resim != null)
+                            {
+                                <img src="@Model.Resim" class="img-responsive " alt="Popup" id="PopupResimImg" />
+                            }
+                            else
+                            {
+                                <img src="~/content/images/image.jpg" class="img-responsive " alt="Popup" id="PopupResimImg" />
+                            }
+                            <input type="file" name="PopupResim" id="PopupResim" value="" accept=".jpg,.png,.JPEG,.jpeg" class="fileuploadres" />
+                            <label for="PopupResim" class="resimsec"><i class="fa fa-refresh"></i> Resim Değiştir</label>
+                            <label class="ui-checkbox ui-checkbox-gray resimcheck">
+                                <input type="checkbox" id="RDurum" name="RDurum" checked="@Model.ResimDurum" />
+                                <span class="input-span"></span>Resim Görünsün
+                            </label>
+                         </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Popup Başlık</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="Baslik" id="Baslik" value="@Model.Baslik" required>
+                    </div>
+                </div>
+                <div class="form-group row" id="date_5">
+                    <label class="col-sm-2 col-form-label">Gösterim Tarihi</label>
+                    <div class="col-sm-10 input-daterange input-group" id="datepicker">
+                        <input class="input-sm form-control" type="text" name="start" value="@String.Format("{0:dd/MM/yyyy}", Model.Baslangic)">
+                        <span class=" input-group-addon p-l-10 p-r-10">ile</span>
+                        <input class="input-sm form-control" type="text" name="end" value="@String.Format("{0:dd/MM/yyyy}", Model.Bitis)">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Popup İçerik</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="Icerik" name="Icerik" style="min-height:80px;">@Model.Icerik</textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Durum</label>
+                    <div class="col-sm-10">
+                        <label class="chkswitch">
+                            <input type="checkbox" id="PDurum" name="PDurum" checked="@Model.Durum">
+                            <span class="swtslider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10 ml-sm-auto">
+                        <button class="btn btn-info" type="submit">Değişiklikleri Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="backpage">
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //ResimYukleJS
+            function resim1URL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#PopupResimImg').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#PopupResim").change(function () {
+                resim1URL(this);
+            });
+        })
+    </script>
+
+<script src="~/content/panel/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<script src="~/content/panel/vendors/bootstrap-datepicker/dist/locales/bootstrap-datepicker.tr.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $('#date_5 .input-daterange').datepicker({
+            keyboardNavigation: false,
+            format: 'dd.mm.yyyy',
+            startDate: '0d',
+            language: 'tr',
+            forceParse: false,
+            autoclose: true
+        });
+    })
+    </script>
+
+
+<script src="~/content/panel/vendors/editor-summernote/dist/summernote.min.js"></script>
+<script src="~/content/panel/vendors/editor-summernote/dist/lang/summernote-tr-TR.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Icerik').summernote({
+            lang: 'tr-TR',
+            placeholder: 'HTML içeriği girin',
+            fontSizeUnits: ['px'],
+            minHeight: 200,
+            maxHeight: 500,
+            spellCheck: false,
+            toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'italic', 'clear']],
+          ['color', ['color']],
+           ['fontname', ['fontname', 'fontsize', 'height']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['hr', ['hr', 'superscript', 'subscript']],
+          ['insert', ['link', 'picture', 'table']],
+          ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+    });
+</script>
+
+}

@@ -1,0 +1,1114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C9DE47E1-1C2A-43C1-98EE-474DFED47316}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebProduct</RootNamespace>
+    <AssemblyName>WebProduct</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\APAyarlarController.cs" />
+    <Compile Include="Controllers\APKategorilerController.cs" />
+    <Compile Include="Controllers\APUrunlerController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IletisimController.cs" />
+    <Compile Include="Controllers\KurumsalController.cs" />
+    <Compile Include="Controllers\UrunlerController.cs" />
+    <Compile Include="Controllers\APManagerController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ceo.cs" />
+    <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\FirmaBilgi.cs" />
+    <Compile Include="Models\FooterMultiModel.cs" />
+    <Compile Include="Models\GrafikVeri.cs" />
+    <Compile Include="Models\Hesap.cs" />
+    <Compile Include="Models\HomeMultiModel.cs" />
+    <Compile Include="Models\HomeSlider.cs" />
+    <Compile Include="Models\Kategoriler.cs" />
+    <Compile Include="Models\Mesajlar.cs" />
+    <Compile Include="Models\Popup.cs" />
+    <Compile Include="Models\Sabitler.cs" />
+    <Compile Include="Models\Sayfalar.cs" />
+    <Compile Include="Models\SosyalMedya.cs" />
+    <Compile Include="Models\Urunler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="assets\img\404.png" />
+    <Content Include="assets\img\admin-avatar.png" />
+    <Content Include="assets\img\adminca-banner\adminca-preview.jpg" />
+    <Content Include="assets\img\adminca-banner\angular.png" />
+    <Content Include="assets\img\adminca-banner\bootstrap.png" />
+    <Content Include="assets\img\adminca-banner\sprite.png" />
+    <Content Include="assets\img\blog\candles.jpg" />
+    <Content Include="assets\img\blog\cropper-picture.jpg" />
+    <Content Include="assets\img\blog\horse.jpg" />
+    <Content Include="assets\img\blog\macarons.jpg" />
+    <Content Include="assets\img\blog\magnifying-glass.jpg" />
+    <Content Include="assets\img\blog\seascape.jpg" />
+    <Content Include="assets\img\blog\storm.jpg" />
+    <Content Include="assets\img\file.png" />
+    <Content Include="assets\img\flags\Afghanistan.png" />
+    <Content Include="assets\img\flags\African Union%28OAS%29.png" />
+    <Content Include="assets\img\flags\Albania.png" />
+    <Content Include="assets\img\flags\Algeria.png" />
+    <Content Include="assets\img\flags\American Samoa.png" />
+    <Content Include="assets\img\flags\Andorra.png" />
+    <Content Include="assets\img\flags\Angola.png" />
+    <Content Include="assets\img\flags\Anguilla.png" />
+    <Content Include="assets\img\flags\Antarctica.png" />
+    <Content Include="assets\img\flags\Antigua &amp; Barbuda.png" />
+    <Content Include="assets\img\flags\Arab League.png" />
+    <Content Include="assets\img\flags\Argentina.png" />
+    <Content Include="assets\img\flags\Armenia.png" />
+    <Content Include="assets\img\flags\Aruba.png" />
+    <Content Include="assets\img\flags\ASEAN.png" />
+    <Content Include="assets\img\flags\Australia.png" />
+    <Content Include="assets\img\flags\Austria.png" />
+    <Content Include="assets\img\flags\Azerbaijan.png" />
+    <Content Include="assets\img\flags\Bahamas.png" />
+    <Content Include="assets\img\flags\Bahrain.png" />
+    <Content Include="assets\img\flags\Bangladesh.png" />
+    <Content Include="assets\img\flags\Barbados.png" />
+    <Content Include="assets\img\flags\Belarus.png" />
+    <Content Include="assets\img\flags\Belgium.png" />
+    <Content Include="assets\img\flags\Belize.png" />
+    <Content Include="assets\img\flags\Benin.png" />
+    <Content Include="assets\img\flags\Bermuda.png" />
+    <Content Include="assets\img\flags\Bhutan.png" />
+    <Content Include="assets\img\flags\Bolivia.png" />
+    <Content Include="assets\img\flags\Bosnia &amp; Herzegovina.png" />
+    <Content Include="assets\img\flags\Botswana.png" />
+    <Content Include="assets\img\flags\Brazil.png" />
+    <Content Include="assets\img\flags\Brunei.png" />
+    <Content Include="assets\img\flags\Bulgaria.png" />
+    <Content Include="assets\img\flags\Burkina Faso.png" />
+    <Content Include="assets\img\flags\Burundi.png" />
+    <Content Include="assets\img\flags\Cambodja.png" />
+    <Content Include="assets\img\flags\Cameroon.png" />
+    <Content Include="assets\img\flags\Canada.png" />
+    <Content Include="assets\img\flags\Cape Verde.png" />
+    <Content Include="assets\img\flags\CARICOM.png" />
+    <Content Include="assets\img\flags\Cayman Islands.png" />
+    <Content Include="assets\img\flags\Central African Republic.png" />
+    <Content Include="assets\img\flags\Chad.png" />
+    <Content Include="assets\img\flags\Chile.png" />
+    <Content Include="assets\img\flags\China.png" />
+    <Content Include="assets\img\flags\CIS.png" />
+    <Content Include="assets\img\flags\Colombia.png" />
+    <Content Include="assets\img\flags\Commonwealth.png" />
+    <Content Include="assets\img\flags\Comoros.png" />
+    <Content Include="assets\img\flags\Congo-Brazzaville.png" />
+    <Content Include="assets\img\flags\Congo-Kinshasa.png" />
+    <Content Include="assets\img\flags\Cook Islands.png" />
+    <Content Include="assets\img\flags\Costa Rica.png" />
+    <Content Include="assets\img\flags\Cote d%27Ivoire.png" />
+    <Content Include="assets\img\flags\Croatia.png" />
+    <Content Include="assets\img\flags\Cuba.png" />
+    <Content Include="assets\img\flags\Cyprus.png" />
+    <Content Include="assets\img\flags\Czech Republic.png" />
+    <Content Include="assets\img\flags\Denmark.png" />
+    <Content Include="assets\img\flags\Djibouti.png" />
+    <Content Include="assets\img\flags\Dominica.png" />
+    <Content Include="assets\img\flags\Dominican Republic.png" />
+    <Content Include="assets\img\flags\Egypt.png" />
+    <Content Include="assets\img\flags\El Salvador.png" />
+    <Content Include="assets\img\flags\England.png" />
+    <Content Include="assets\img\flags\Equador.png" />
+    <Content Include="assets\img\flags\Equatorial Guinea.png" />
+    <Content Include="assets\img\flags\Eritrea.png" />
+    <Content Include="assets\img\flags\Estonia.png" />
+    <Content Include="assets\img\flags\Ethiopia.png" />
+    <Content Include="assets\img\flags\European Union.png" />
+    <Content Include="assets\img\flags\Faroes.png" />
+    <Content Include="assets\img\flags\Fiji.png" />
+    <Content Include="assets\img\flags\Finland.png" />
+    <Content Include="assets\img\flags\France.png" />
+    <Content Include="assets\img\flags\Gabon.png" />
+    <Content Include="assets\img\flags\Gambia.png" />
+    <Content Include="assets\img\flags\Georgia.png" />
+    <Content Include="assets\img\flags\Germany.png" />
+    <Content Include="assets\img\flags\Ghana.png" />
+    <Content Include="assets\img\flags\Gibraltar.png" />
+    <Content Include="assets\img\flags\Greece.png" />
+    <Content Include="assets\img\flags\Greenland.png" />
+    <Content Include="assets\img\flags\Grenada.png" />
+    <Content Include="assets\img\flags\Guadeloupe.png" />
+    <Content Include="assets\img\flags\Guam.png" />
+    <Content Include="assets\img\flags\Guatemala.png" />
+    <Content Include="assets\img\flags\Guernsey.png" />
+    <Content Include="assets\img\flags\Guinea-Bissau.png" />
+    <Content Include="assets\img\flags\Guinea.png" />
+    <Content Include="assets\img\flags\Guyana.png" />
+    <Content Include="assets\img\flags\Haiti.png" />
+    <Content Include="assets\img\flags\Honduras.png" />
+    <Content Include="assets\img\flags\Hong Kong.png" />
+    <Content Include="assets\img\flags\Hungary.png" />
+    <Content Include="assets\img\flags\Iceland.png" />
+    <Content Include="assets\img\flags\India.png" />
+    <Content Include="assets\img\flags\Indonesia.png" />
+    <Content Include="assets\img\flags\Iran.png" />
+    <Content Include="assets\img\flags\Iraq.png" />
+    <Content Include="assets\img\flags\Ireland.png" />
+    <Content Include="assets\img\flags\Islamic Conference.png" />
+    <Content Include="assets\img\flags\Isle of Man.png" />
+    <Content Include="assets\img\flags\Israel.png" />
+    <Content Include="assets\img\flags\Italy.png" />
+    <Content Include="assets\img\flags\Jamaica.png" />
+    <Content Include="assets\img\flags\japan.png" />
+    <Content Include="assets\img\flags\Jersey.png" />
+    <Content Include="assets\img\flags\Jordan.png" />
+    <Content Include="assets\img\flags\Kazakhstan.png" />
+    <Content Include="assets\img\flags\Kenya.png" />
+    <Content Include="assets\img\flags\Kiribati.png" />
+    <Content Include="assets\img\flags\Kosovo.png" />
+    <Content Include="assets\img\flags\Kuwait.png" />
+    <Content Include="assets\img\flags\Kyrgyzstan.png" />
+    <Content Include="assets\img\flags\Laos.png" />
+    <Content Include="assets\img\flags\Latvia.png" />
+    <Content Include="assets\img\flags\Lebanon.png" />
+    <Content Include="assets\img\flags\Lesotho.png" />
+    <Content Include="assets\img\flags\Liberia.png" />
+    <Content Include="assets\img\flags\Libya.png" />
+    <Content Include="assets\img\flags\Liechtenstein.png" />
+    <Content Include="assets\img\flags\Lithuania.png" />
+    <Content Include="assets\img\flags\Luxembourg.png" />
+    <Content Include="assets\img\flags\Macao.png" />
+    <Content Include="assets\img\flags\Macedonia.png" />
+    <Content Include="assets\img\flags\Madagascar.png" />
+    <Content Include="assets\img\flags\Malawi.png" />
+    <Content Include="assets\img\flags\Malaysia.png" />
+    <Content Include="assets\img\flags\Maldives.png" />
+    <Content Include="assets\img\flags\Mali.png" />
+    <Content Include="assets\img\flags\Malta.png" />
+    <Content Include="assets\img\flags\Marshall Islands.png" />
+    <Content Include="assets\img\flags\Martinique.png" />
+    <Content Include="assets\img\flags\Mauritania.png" />
+    <Content Include="assets\img\flags\Mauritius.png" />
+    <Content Include="assets\img\flags\Mexico.png" />
+    <Content Include="assets\img\flags\Micronesia.png" />
+    <Content Include="assets\img\flags\Moldova.png" />
+    <Content Include="assets\img\flags\Monaco.png" />
+    <Content Include="assets\img\flags\Mongolia.png" />
+    <Content Include="assets\img\flags\Montenegro.png" />
+    <Content Include="assets\img\flags\Montserrat.png" />
+    <Content Include="assets\img\flags\Morocco.png" />
+    <Content Include="assets\img\flags\Mozambique.png" />
+    <Content Include="assets\img\flags\Myanmar%28Burma%29.png" />
+    <Content Include="assets\img\flags\Namibia.png" />
+    <Content Include="assets\img\flags\NATO.png" />
+    <Content Include="assets\img\flags\Nauru.png" />
+    <Content Include="assets\img\flags\Nepal.png" />
+    <Content Include="assets\img\flags\Netherlands Antilles.png" />
+    <Content Include="assets\img\flags\Netherlands.png" />
+    <Content Include="assets\img\flags\New Caledonia.png" />
+    <Content Include="assets\img\flags\New Zealand.png" />
+    <Content Include="assets\img\flags\Nicaragua.png" />
+    <Content Include="assets\img\flags\Niger.png" />
+    <Content Include="assets\img\flags\Nigeria.png" />
+    <Content Include="assets\img\flags\North Korea.png" />
+    <Content Include="assets\img\flags\Northern Cyprus.png" />
+    <Content Include="assets\img\flags\Northern Ireland.png" />
+    <Content Include="assets\img\flags\Norway.png" />
+    <Content Include="assets\img\flags\Olimpic Movement.png" />
+    <Content Include="assets\img\flags\Oman.png" />
+    <Content Include="assets\img\flags\OPEC.png" />
+    <Content Include="assets\img\flags\Pakistan.png" />
+    <Content Include="assets\img\flags\Palau.png" />
+    <Content Include="assets\img\flags\Palestine.png" />
+    <Content Include="assets\img\flags\Panama.png" />
+    <Content Include="assets\img\flags\Papua New Guinea.png" />
+    <Content Include="assets\img\flags\Paraguay.png" />
+    <Content Include="assets\img\flags\Peru.png" />
+    <Content Include="assets\img\flags\Philippines.png" />
+    <Content Include="assets\img\flags\Poland.png" />
+    <Content Include="assets\img\flags\Portugal.png" />
+    <Content Include="assets\img\flags\Puerto Rico.png" />
+    <Content Include="assets\img\flags\Qatar.png" />
+    <Content Include="assets\img\flags\Red Cross.png" />
+    <Content Include="assets\img\flags\Reunion.png" />
+    <Content Include="assets\img\flags\Romania.png" />
+    <Content Include="assets\img\flags\Russian Federation.png" />
+    <Content Include="assets\img\flags\Rwanda.png" />
+    <Content Include="assets\img\flags\Saint Lucia.png" />
+    <Content Include="assets\img\flags\Samoa.png" />
+    <Content Include="assets\img\flags\San Marino.png" />
+    <Content Include="assets\img\flags\Sao Tome &amp; Principe.png" />
+    <Content Include="assets\img\flags\Saudi Arabia.png" />
+    <Content Include="assets\img\flags\Scotland.png" />
+    <Content Include="assets\img\flags\Senegal.png" />
+    <Content Include="assets\img\flags\Serbia%28Yugoslavia%29.png" />
+    <Content Include="assets\img\flags\Seyshelles.png" />
+    <Content Include="assets\img\flags\Sierra Leone.png" />
+    <Content Include="assets\img\flags\Singapore.png" />
+    <Content Include="assets\img\flags\Slovakia.png" />
+    <Content Include="assets\img\flags\Slovenia.png" />
+    <Content Include="assets\img\flags\Solomon Islands.png" />
+    <Content Include="assets\img\flags\Somalia.png" />
+    <Content Include="assets\img\flags\Somaliland.png" />
+    <Content Include="assets\img\flags\South Africa.png" />
+    <Content Include="assets\img\flags\South Korea.png" />
+    <Content Include="assets\img\flags\Spain.png" />
+    <Content Include="assets\img\flags\Sri Lanka.png" />
+    <Content Include="assets\img\flags\St Kitts &amp; Nevis.png" />
+    <Content Include="assets\img\flags\St Vincent &amp; the Grenadines.png" />
+    <Content Include="assets\img\flags\Sudan.png" />
+    <Content Include="assets\img\flags\Suriname.png" />
+    <Content Include="assets\img\flags\Swaziland.png" />
+    <Content Include="assets\img\flags\Sweden.png" />
+    <Content Include="assets\img\flags\Switzerland.png" />
+    <Content Include="assets\img\flags\Syria.png" />
+    <Content Include="assets\img\flags\Tahiti%28French Polinesia%29.png" />
+    <Content Include="assets\img\flags\Taiwan.png" />
+    <Content Include="assets\img\flags\Tajikistan.png" />
+    <Content Include="assets\img\flags\Tanzania.png" />
+    <Content Include="assets\img\flags\Thailand.png" />
+    <Content Include="assets\img\flags\Timor-Leste.png" />
+    <Content Include="assets\img\flags\Togo.png" />
+    <Content Include="assets\img\flags\Tonga.png" />
+    <Content Include="assets\img\flags\Trinidad &amp; Tobago.png" />
+    <Content Include="assets\img\flags\Tunisia.png" />
+    <Content Include="assets\img\flags\Turkey.png" />
+    <Content Include="assets\img\flags\Turkmenistan.png" />
+    <Content Include="assets\img\flags\Turks and Caicos Islands.png" />
+    <Content Include="assets\img\flags\Tuvalu.png" />
+    <Content Include="assets\img\flags\UAE.png" />
+    <Content Include="assets\img\flags\Uganda.png" />
+    <Content Include="assets\img\flags\uk.png" />
+    <Content Include="assets\img\flags\Ukraine.png" />
+    <Content Include="assets\img\flags\United Nations.png" />
+    <Content Include="assets\img\flags\Uruguay.png" />
+    <Content Include="assets\img\flags\us.png" />
+    <Content Include="assets\img\flags\Uzbekistan.png" />
+    <Content Include="assets\img\flags\Vanuatu.png" />
+    <Content Include="assets\img\flags\Vatican City.png" />
+    <Content Include="assets\img\flags\Venezuela.png" />
+    <Content Include="assets\img\flags\Viet Nam.png" />
+    <Content Include="assets\img\flags\Virgin Islands British.png" />
+    <Content Include="assets\img\flags\Virgin Islands US.png" />
+    <Content Include="assets\img\flags\Wales.png" />
+    <Content Include="assets\img\flags\Western Sahara.png" />
+    <Content Include="assets\img\flags\Yemen.png" />
+    <Content Include="assets\img\flags\Zambia.png" />
+    <Content Include="assets\img\flags\Zimbabwe.png" />
+    <Content Include="assets\img\image.jpg" />
+    <Content Include="assets\img\image.png" />
+    <Content Include="assets\img\logos\logo-vue.png" />
+    <Content Include="assets\img\repeat.png" />
+    <Content Include="assets\img\users\u1.jpg" />
+    <Content Include="assets\img\users\u2.jpg" />
+    <Content Include="assets\img\users\u3.jpg" />
+    <Content Include="assets\img\users\u4.jpg" />
+    <Content Include="assets\img\users\u5.jpg" />
+    <Content Include="assets\img\users\u6.jpg" />
+    <Content Include="assets\img\users\u7.jpg" />
+    <Content Include="content\files\css\bg.png" />
+    <Content Include="content\files\css\mapmarker.png" />
+    <Content Include="content\files\css\sitesablon.css" />
+    <Content Include="content\files\js\arama.js" />
+    <Content Include="content\files\js\pagescript.js" />
+    <Content Include="content\files\js\yukari-cik.js" />
+    <Content Include="content\files\js\yukleniyor.js" />
+    <Content Include="content\images\700x400.png" />
+    <Content Include="content\images\900x350.png" />
+    <Content Include="content\images\image.jpg" />
+    <Content Include="content\images\image1.jpg" />
+    <Content Include="content\images\loading.gif" />
+    <Content Include="content\images\logo\favicon.png" />
+    <Content Include="content\images\logo\logo.png" />
+    <Content Include="content\images\logo\yukleniyor.png" />
+    <Content Include="content\images\popup.png" />
+    <Content Include="content\images\slider1.jpg" />
+    <Content Include="content\images\slider2.jpg" />
+    <Content Include="content\panel\images\user.jpg" />
+    <Content Include="content\images\yeni.png" />
+    <Content Include="content\panel\css\main.css" />
+    <Content Include="content\panel\css\main.min.css" />
+    <Content Include="content\panel\css\pages\auth-light.css" />
+    <Content Include="content\panel\css\pages\mailbox.css" />
+    <Content Include="content\panel\css\panelstyle.css" />
+    <Content Include="content\panel\css\themes\blue-light.css" />
+    <Content Include="content\panel\css\themes\blue.css" />
+    <Content Include="content\panel\css\themes\green-light.css" />
+    <Content Include="content\panel\css\themes\green.css" />
+    <Content Include="content\panel\css\themes\orange-light.css" />
+    <Content Include="content\panel\css\themes\orange.css" />
+    <Content Include="content\panel\css\themes\pink-light.css" />
+    <Content Include="content\panel\css\themes\pink.css" />
+    <Content Include="content\panel\css\themes\purple-light.css" />
+    <Content Include="content\panel\css\themes\purple.css" />
+    <Content Include="content\panel\css\themes\white.css" />
+    <Content Include="content\panel\js\app.js" />
+    <Content Include="content\panel\js\app.min.js" />
+    <Content Include="content\panel\js\scripts\calendar-demo.js" />
+    <Content Include="content\panel\js\scripts\chartjs_demo.js" />
+    <Content Include="content\panel\js\scripts\charts_flot_demo.js" />
+    <Content Include="content\panel\js\scripts\charts_morris_demo.js" />
+    <Content Include="content\panel\js\scripts\dashboard_verileri.js" />
+    <Content Include="content\panel\js\scripts\form-plugins.js" />
+    <Content Include="content\panel\js\scripts\jvectormap-demo.js" />
+    <Content Include="content\panel\js\scripts\mailbox.js" />
+    <Content Include="content\panel\js\scripts\profile-demo.js" />
+    <Content Include="content\panel\js\scripts\sparkline-demo.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker3.min.css" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\js\bootstrap-datepicker.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker-en-CA.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ar-tn.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bn.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.br.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-IE.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-NZ.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-ZA.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hi.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.km.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.oc.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.si.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ta.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.tg.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.uz-cyrl.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.uz-latn.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="content\panel\vendors\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="content\panel\vendors\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="content\panel\vendors\chart.js\dist\Chart.bundle.js" />
+    <Content Include="content\panel\vendors\chart.js\dist\Chart.bundle.min.js" />
+    <Content Include="content\panel\vendors\chart.js\dist\Chart.js" />
+    <Content Include="content\panel\vendors\chart.js\dist\Chart.min.js" />
+    <Content Include="content\panel\vendors\datatable\datatables.css" />
+    <Content Include="content\panel\vendors\datatable\datatables.js" />
+    <Content Include="content\panel\vendors\datatable\datatables.min.css" />
+    <Content Include="content\panel\vendors\datatable\datatables.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ar-AR.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ar-AR.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-bg-BG.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-bg-BG.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ca-ES.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ca-ES.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-cs-CZ.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-cs-CZ.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-da-DK.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-da-DK.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-de-DE.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-de-DE.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-el-GR.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-el-GR.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-es-ES.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-es-ES.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-es-EU.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-es-EU.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-fa-IR.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-fa-IR.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-fi-FI.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-fi-FI.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-fr-FR.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-fr-FR.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-gl-ES.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-gl-ES.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-he-IL.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-he-IL.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-hr-HR.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-hr-HR.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-hu-HU.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-hu-HU.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-id-ID.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-id-ID.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-it-IT.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-it-IT.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ja-JP.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ja-JP.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ko-KR.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ko-KR.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-lt-LT.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-lt-LT.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-lt-LV.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-lt-LV.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-mn-MN.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-mn-MN.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-nb-NO.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-nb-NO.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-nl-NL.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-nl-NL.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-pl-PL.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-pl-PL.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-pt-BR.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-pt-BR.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-pt-PT.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-pt-PT.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ro-RO.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ro-RO.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ru-RU.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ru-RU.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sk-SK.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sk-SK.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sl-SI.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sl-SI.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sr-RS-Latin.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sr-RS.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sr-RS.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sv-SE.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-sv-SE.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ta-IN.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-ta-IN.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-th-TH.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-th-TH.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-tr-TR.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-tr-TR.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-uk-UA.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-uk-UA.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-vi-VN.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-vi-VN.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-zh-CN.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-zh-CN.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-zh-TW.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\lang\summernote-zh-TW.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote-bs4.css" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote-bs4.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote-bs4.min.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote-lite.css" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote-lite.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote.css" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote.js" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote.min.js" />
+    <Content Include="content\panel\vendors\font-awesome\css\font-awesome.css" />
+    <Content Include="content\panel\vendors\font-awesome\css\font-awesome.min.css" />
+    <Content Include="content\panel\vendors\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="content\panel\vendors\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="content\panel\vendors\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="content\panel\vendors\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="content\panel\vendors\jquery-validation\dist\additional-methods.js" />
+    <Content Include="content\panel\vendors\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="content\panel\vendors\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="content\panel\vendors\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="content\panel\vendors\jquery\dist\core.js" />
+    <Content Include="content\panel\vendors\jquery\dist\jquery.js" />
+    <Content Include="content\panel\vendors\jquery\dist\jquery.min.js" />
+    <Content Include="content\panel\vendors\jquery\dist\jquery.slim.js" />
+    <Content Include="content\panel\vendors\jquery\dist\jquery.slim.min.js" />
+    <Content Include="content\panel\vendors\jvectormap\jquery-jvectormap-2.0.3.css" />
+    <Content Include="content\panel\vendors\jvectormap\jquery-jvectormap-2.0.3.min.js" />
+    <Content Include="content\panel\vendors\jvectormap\jquery-jvectormap-us-aea-en.js" />
+    <Content Include="content\panel\vendors\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="content\panel\vendors\metisMenu\dist\metisMenu.css" />
+    <Content Include="content\panel\vendors\metisMenu\dist\metisMenu.js" />
+    <Content Include="content\panel\vendors\metisMenu\dist\metisMenu.min.css" />
+    <Content Include="content\panel\vendors\metisMenu\dist\metisMenu.min.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\esm\popper-utils.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\esm\popper-utils.min.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\esm\popper.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\esm\popper.min.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\popper-utils.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\popper-utils.min.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\popper.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\popper.min.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\umd\popper-utils.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\umd\popper-utils.min.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\umd\popper.js" />
+    <Content Include="content\panel\vendors\popper.js\dist\umd\popper.min.js" />
+    <Content Include="content\panel\vendors\themify-icons\css\themify-icons.css" />
+    <Content Include="content\panel\vendors\themify-icons\fonts\themify.svg" />
+    <Content Include="content\panel\vendors\themify-icons\ie7\ie7.css" />
+    <Content Include="content\panel\vendors\themify-icons\ie7\ie7.js" />
+    <Content Include="content\plugins\angularjs\angular-animate.js" />
+    <Content Include="content\plugins\angularjs\angular-animate.min.js" />
+    <Content Include="content\plugins\angularjs\angular-aria.js" />
+    <Content Include="content\plugins\angularjs\angular-aria.min.js" />
+    <Content Include="content\plugins\angularjs\angular-cookies.js" />
+    <Content Include="content\plugins\angularjs\angular-cookies.min.js" />
+    <Content Include="content\plugins\angularjs\angular-csp.css" />
+    <Content Include="content\plugins\angularjs\angular-loader.js" />
+    <Content Include="content\plugins\angularjs\angular-loader.min.js" />
+    <Content Include="content\plugins\angularjs\angular-message-format.js" />
+    <Content Include="content\plugins\angularjs\angular-message-format.min.js" />
+    <Content Include="content\plugins\angularjs\angular-messages.js" />
+    <Content Include="content\plugins\angularjs\angular-messages.min.js" />
+    <Content Include="content\plugins\angularjs\angular-mocks.js" />
+    <Content Include="content\plugins\angularjs\angular-parse-ext.js" />
+    <Content Include="content\plugins\angularjs\angular-parse-ext.min.js" />
+    <Content Include="content\plugins\angularjs\angular-resource.js" />
+    <Content Include="content\plugins\angularjs\angular-resource.min.js" />
+    <Content Include="content\plugins\angularjs\angular-route.js" />
+    <Content Include="content\plugins\angularjs\angular-route.min.js" />
+    <Content Include="content\plugins\angularjs\angular-sanitize.js" />
+    <Content Include="content\plugins\angularjs\angular-sanitize.min.js" />
+    <Content Include="content\plugins\angularjs\angular-touch.js" />
+    <Content Include="content\plugins\angularjs\angular-touch.min.js" />
+    <Content Include="content\plugins\angularjs\angular.js" />
+    <Content Include="content\plugins\angularjs\angular.min.js" />
+    <Content Include="content\plugins\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="content\plugins\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="content\plugins\bootstrap\css\bootstrap.css" />
+    <Content Include="content\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="content\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="content\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="content\plugins\bootstrap\js\npm.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\anchor.min.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\autoprefixer.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\Blob.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\FileSaver.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\holder.min.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\jquery.min.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\jszip.min.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\less.min.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\uglify.min.js" />
+    <Content Include="content\plugins\bootstrap\js\vendor\ZeroClipboard.min.js" />
+    <Content Include="content\plugins\fa-icon\css\font-awesome.css" />
+    <Content Include="content\plugins\fa-icon\css\font-awesome.min.css" />
+    <Content Include="content\plugins\fa-icon\fonts\fontawesome-webfont.svg" />
+    <Content Include="content\plugins\ie-bug\ie-emulation-modes-warning.js" />
+    <Content Include="content\plugins\ie-bug\ie10-viewport-bug-workaround.css" />
+    <Content Include="content\plugins\ie-bug\ie10-viewport-bug-workaround.js" />
+    <Content Include="content\plugins\ie-bug\ie8-responsive-file-warning.js" />
+    <Content Include="content\plugins\mapjs\jquery-ui-1.8.1.custom.min.js" />
+    <Content Include="content\plugins\mapjs\jquery-ui-1.8.5.custom.min.js" />
+    <Content Include="content\plugins\normalizereset\normalize.css" />
+    <Content Include="content\plugins\normalizereset\reset.css" />
+    <Content Include="content\plugins\owl-slider\css\owl.carousel.css" />
+    <Content Include="content\plugins\owl-slider\css\owl.carousel.min.css" />
+    <Content Include="content\plugins\owl-slider\css\owl.theme.default.css" />
+    <Content Include="content\plugins\owl-slider\css\owl.theme.default.min.css" />
+    <Content Include="content\plugins\owl-slider\js\app.js" />
+    <Content Include="content\plugins\owl-slider\js\highlight.js" />
+    <Content Include="content\plugins\owl-slider\js\jquery.min.js" />
+    <Content Include="content\plugins\owl-slider\js\owl.carousel.js" />
+    <Content Include="content\plugins\owl-slider\js\xowl.carousel.js" />
+    <Content Include="content\plugins\owl-slider\js\xowl.carousel.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="upload\car1.jpg" />
+    <Content Include="upload\car2.jpg" />
+    <Content Include="upload\car3.jpg" />
+    <Content Include="upload\car4.jpg" />
+    <Content Include="upload\logo\logo.png" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="upload\urunler\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\plugins\angularjs\angular-animate.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-aria.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-cookies.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-loader.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-message-format.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-messages.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-parse-ext.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-resource.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-route.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-sanitize.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular-touch.min.js.map" />
+    <Content Include="content\plugins\angularjs\angular.min.js.map" />
+    <Content Include="content\plugins\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="content\plugins\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="content\plugins\bootstrap\css\bootstrap.css.map" />
+    <Content Include="content\plugins\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="content\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="content\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\plugins\fa-icon\fonts\fontawesome-webfont.eot" />
+    <Content Include="content\plugins\fa-icon\fonts\fontawesome-webfont.ttf" />
+    <Content Include="content\plugins\fa-icon\fonts\fontawesome-webfont.woff" />
+    <Content Include="content\plugins\fa-icon\fonts\fontawesome-webfont.woff2" />
+    <Content Include="content\plugins\fa-icon\fonts\FontAwesome.otf" />
+    <Content Include="content\plugins\fa-icon\less\animated.less" />
+    <Content Include="content\plugins\fa-icon\less\bordered-pulled.less" />
+    <Content Include="content\plugins\fa-icon\less\core.less" />
+    <Content Include="content\plugins\fa-icon\less\fixed-width.less" />
+    <Content Include="content\plugins\fa-icon\less\font-awesome.less" />
+    <Content Include="content\plugins\fa-icon\less\icons.less" />
+    <Content Include="content\plugins\fa-icon\less\larger.less" />
+    <Content Include="content\plugins\fa-icon\less\list.less" />
+    <Content Include="content\plugins\fa-icon\less\mixins.less" />
+    <Content Include="content\plugins\fa-icon\less\path.less" />
+    <Content Include="content\plugins\fa-icon\less\rotated-flipped.less" />
+    <Content Include="content\plugins\fa-icon\less\screen-reader.less" />
+    <Content Include="content\plugins\fa-icon\less\stacked.less" />
+    <Content Include="content\plugins\fa-icon\less\variables.less" />
+    <Content Include="content\plugins\fa-icon\scss\font-awesome.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_animated.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_bordered-pulled.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_core.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_fixed-width.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_icons.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_larger.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_list.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_mixins.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_path.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_rotated-flipped.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_screen-reader.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_stacked.scss" />
+    <Content Include="content\plugins\fa-icon\scss\_variables.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Menu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Footer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Topbar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\kurumsal\Hakkimizda.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\kurumsal\Gizlilik_Politikasi.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\kurumsal\Kullanim_Kosullari.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Iletisim\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Hata.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Urunler\SolMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Urunler\UrunDetay.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Urunler\UrunListesi.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="content\panel\vendors\bootstrap\dist\css\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\panel\vendors\jquery\dist\jquery.min.map" />
+    <Content Include="content\panel\vendors\jquery\dist\jquery.slim.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\panel\vendors\popper.js\dist\esm\popper-utils.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\esm\popper-utils.min.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\esm\popper.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\esm\popper.min.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\popper-utils.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\popper-utils.min.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\popper.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\popper.min.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\umd\popper-utils.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\umd\popper-utils.min.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\umd\popper.js.map" />
+    <Content Include="content\panel\vendors\popper.js\dist\umd\popper.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\panel\vendors\metisMenu\dist\metisMenu.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\panel\vendors\jquery-slimscroll\bower.json" />
+    <Content Include="content\panel\vendors\jquery-slimscroll\package.json" />
+    <Content Include="content\panel\vendors\jquery-slimscroll\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\panel\vendors\themify-icons\fonts\themify.eot" />
+    <Content Include="content\panel\vendors\themify-icons\fonts\themify.ttf" />
+    <Content Include="content\panel\vendors\themify-icons\fonts\themify.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\panel\vendors\font-awesome\bower.json" />
+    <Content Include="content\panel\vendors\font-awesome\css\font-awesome.css.map" />
+    <Content Include="content\panel\vendors\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="content\panel\vendors\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="content\panel\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="content\panel\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="content\panel\vendors\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="content\panel\vendors\font-awesome\less\animated.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\bordered-pulled.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\core.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\fixed-width.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\font-awesome.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\icons.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\larger.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\list.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\mixins.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\path.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\rotated-flipped.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\screen-reader.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\stacked.less" />
+    <Content Include="content\panel\vendors\font-awesome\less\variables.less" />
+    <Content Include="content\panel\vendors\font-awesome\scss\font-awesome.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_animated.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_core.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_icons.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_larger.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_list.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_mixins.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_path.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_stacked.scss" />
+    <Content Include="content\panel\vendors\font-awesome\scss\_variables.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Urunler\BenzerUrunler.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APManager\AdminGiris.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APManager\AdminParolaYenile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\AdminMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APManager\Mesajlar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APManager\MesajSolmenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APManager\MesajOku.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APUrunler\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APKategoriler\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APKategoriler\KategoriEkle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APKategoriler\KategoriDuzenle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APUrunler\UrunEkle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APUrunler\Duzenle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\CeoAyar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\FirmaAyar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\PopupAyar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker.css.map" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css.map" />
+    <Content Include="content\panel\vendors\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\panel\vendors\editor-summernote\dist\font\summernote.eot" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\font\summernote.ttf" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\font\summernote.woff" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote-bs4.js.map" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote-lite.js.map" />
+    <Content Include="content\panel\vendors\editor-summernote\dist\summernote.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\SabitlerAyar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\HesapAyar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\SosyalMedya.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\SosyalMedyaEkle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\SliderAyar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\SliderEkle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\SayfaAyar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APAyarlar\SayfaDuzenle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\MesajBildirim.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\APManager\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\UrunAra.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\OneCikanlar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_OneCikanlarList.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49684</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49684/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

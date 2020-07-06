@@ -1,0 +1,40 @@
+﻿@model WebProduct.Models.FooterMultiModel
+<footer>
+    <div class="container">
+        <div class="footersec">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="footer-menu">
+                        <a href="/kurumsal/hakkimizda">Hakkımızda</a>
+                        <a href="/kurumsal/gizlilik_politikasi">Gizlilik Politikası</a>
+                        <a href="/kurumsal/kullanim_kosullari">Kullanım Koşulları</a>
+                        <a href="/iletisim">İletişim</a>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="footer-contact">
+                        <div class="footer-contact-info">
+                            <i class="fa fa-envelope"></i> <span>@Model.firmabilgi.FirmaMail</span>
+                        </div>
+                        <div class="footer-contact-info">
+                            <i class="fa fa-phone"></i> <span>@Model.firmabilgi.FirmaTel</span>
+                        </div>
+                        <div class="footer-contact-info">
+                            <i class="fa fa-map-marker"></i> <span>@Model.firmabilgi.FirmaAdres</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="footer-social">
+                        @foreach (var item in Model.sosyalmedya)
+                        {
+                            <a href="@item.MedyaUrl" target="_blank" title="@item.MedyaAdi">
+                                <i class="@item.MedyaClass"></i>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
