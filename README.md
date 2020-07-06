@@ -6,7 +6,8 @@ PROJE ÖZELLİKLERİ:
 + Ürün işlemleri (ekle, sil, güncelle, vitrinde göster, aktif/pasif) 
 + Kullanıcı işlemleri (giriş, beni hatırla, şifremi unuttum) 
 + Sayfa ayarları (html editör) +Popup işlemleri (belirli tarih aralığında aktif/pasif, html editor) 
-+ Mesaj kutusu (gelen, favori, arşiv) 
++ Mesaj kutusu (gelen, favori, arşiv)
++ Veri grafikleri (Ürün/grafik oranı, içerik adedi, giriş lokasyonu)
 + Slider ayarı 
 + Ceo ayarları 
 + Panel ayarları
