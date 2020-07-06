@@ -1,4 +1,4 @@
-# Urun-Yonetim
+# İçerik Yönetim Sistemi
 PROJE DETAYI Bu proje kurumsal bir firmanın, firma bilgilerini ve ürünlerini kategori biçiminde sergileyebileceği bir kurumsal içerik yönetim sitemidir. Web tasarım ve yazılım işlemleri tamamen özel olarak referans için hazırlanmıştır. Bu sebeple tüm hakları saklıdır ve ticari kullanıma kapalıdır.
 
 PROJE ÖZELLİKLERİ
